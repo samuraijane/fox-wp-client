@@ -1,0 +1,18 @@
+# Build folder
+Build
+build
+Dist
+dist
+
+# Logs
+logs
+*.log
+
+# Mac files
+.DS_Store
+
+# NPM Dependencies
+node_modules
+
+#Environment
+.env
