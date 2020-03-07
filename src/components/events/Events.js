@@ -7,7 +7,7 @@ import Event from "./Event";
 const Events = ({ fetch, pages, posts }) => {
   const [wp, setWp] = useState(null);
   useEffect(() => {
-    const wpData = pages.find(x => x.post_name === "events");
+    const wpData = pages.find(x => x.post_name === "blog");
     setWp(wpData.post_content);
     fetch("posts");
   }, []);

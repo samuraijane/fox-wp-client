@@ -2,16 +2,16 @@ import React, { useEffect, useState } from "react";
 import { Route } from "react-router-dom";
 import { Compete, Home, Navigation } from "../components";
 import { Contact } from "../components/contact";
-import { Events } from "../components/events";
+import { Blog } from "../components/events";
 import { Gallery } from "../components/gallery";
 
 const CustomRoute = props => {
   const routeMap = {
+    blog: Blog,
     contact: Contact,
     compete: Compete,
-    events: Events,
     gallery: Gallery,
-    landing: Home
+    home: Home
   };
 
   const TheComponent = routeMap[props.theComponent];
@@ -19,7 +19,6 @@ const CustomRoute = props => {
   const pageData = Object.assign({}, props.pageData);
   return (
     <Route
-      exact
       path={props.path}
       render={props => <TheComponent {...props} pageData={pageData} />}
     />

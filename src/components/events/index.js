@@ -1,3 +1,3 @@
-import Events from "./Events";
+import Blog from "./Events";
 
-export { Events };
+export { Blog };

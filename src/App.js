@@ -29,6 +29,7 @@ const App = props => {
     );
   } else {
     const routes = props.pages.map((route, index) => {
+      console.log("rat", route);
       return (
         <CustomRoute
           exact={true}
