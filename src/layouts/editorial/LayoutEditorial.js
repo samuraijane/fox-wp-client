@@ -3,7 +3,7 @@ import { string } from "prop-types";
 
 const Editorial = ({ text }) => {
   return (
-    <div className="y-wrap">
+    <div>
       <p>{text}</p>
     </div>
   );

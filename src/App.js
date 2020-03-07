@@ -41,7 +41,7 @@ const App = props => {
       );
     });
     return (
-      <div className="y-buffer">
+      <div className="y-buffer y-wrap">
         <Navigation navs={props.navs} />
         <Switch>
           {routes}

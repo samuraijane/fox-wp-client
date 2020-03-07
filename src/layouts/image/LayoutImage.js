@@ -1,15 +1,15 @@
-import React, { Fragment } from "react";
+import React from "react";
 import { arrayOf, shape } from "prop-types";
 
 const Image = ({ images }) => {
   const theImages = images.map((image, index) => {
     return (
-      <div className="nimg thumbnail" key={index}>
+      <div className="nimg" key={index}>
         <img src={image.image.url} />
       </div>
     );
   });
-  return <Fragment>{theImages}</Fragment>;
+  return <div className="images-container">{theImages}</div>;
 };
 
 Image.propTypes = {

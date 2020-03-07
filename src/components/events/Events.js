@@ -22,12 +22,7 @@ const Events = ({ fetch, pages, posts }) => {
       );
     });
 
-    return (
-      <div className="y-center">
-        <h1>Events Page</h1>
-        {events}
-      </div>
-    );
+    return <div>{events}</div>;
   }
   return <div>One moment while we grab that for you.</div>;
 };
