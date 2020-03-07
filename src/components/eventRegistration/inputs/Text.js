@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { shape } from "prop-types";
 
 const Text = ({ data }) => {
   const [inputValue, setInputValue] = useState({});
   useEffect(() => {
-    data.inputs.map((input, index) => {
+    data.inputs.map(input => {
       setInputValue({ [`"${input.id}"`]: "" });
     });
   }, []);
@@ -25,6 +26,10 @@ const Text = ({ data }) => {
     }
   });
   return <p>{inputs}</p>;
+};
+
+Text.propTypes = {
+  data: shape({})
 };
 
 export default Text;

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { shape } from "prop-types";
 
 const Radio = ({ data }) => {
+  // eslint-disable-next-line no-unused-vars
   const [inputValue, setInputValue] = useState({
     [`"${data.id}"`]: ""
   });
@@ -22,6 +24,10 @@ const Radio = ({ data }) => {
     );
   });
   return <div>{options}</div>;
+};
+
+Radio.propTypes = {
+  data: shape({})
 };
 
 export default Radio;

@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import { bool, shape } from "prop-types";
 
 const Payment = ({ isPaypal, name }) => {
   useEffect(() => {
@@ -45,6 +46,11 @@ const Payment = ({ isPaypal, name }) => {
   }, [isPaypal, window.paypal]);
 
   return <div className="paypal-container" id="paypal-container"></div>;
+};
+
+Payment.propTypes = {
+  isPaypal: bool,
+  name: shape({})
 };
 
 const mapStateToProps = state => ({

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { shape } from "prop-types";
 
 const Email = ({ data }) => {
   const [inputValue, setInputValue] = useState({
@@ -17,6 +18,10 @@ const Email = ({ data }) => {
       value={inputValue[data.id]}
     />
   );
+};
+
+Email.propTypes = {
+  data: shape({})
 };
 
 export default Email;

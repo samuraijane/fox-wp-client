@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { shape } from "prop-types";
 
 const List = ({ data }) => {
   const [inputValue, setInputValue] = useState({});
@@ -19,7 +20,7 @@ const List = ({ data }) => {
   const handleChange = e => {
     setInputValue({ [`"${e.target.name}"`]: e.target.value });
   };
-  const inputs = items.map((input, index) => {
+  const inputs = items.map(input => {
     return (
       <li key={input.id}>
         <input
@@ -34,6 +35,10 @@ const List = ({ data }) => {
     );
   });
   return <ul>{inputs}</ul>;
+};
+
+List.propTypes = {
+  data: shape({})
 };
 
 export default List;

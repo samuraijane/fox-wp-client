@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { shape } from "prop-types";
 
 const Select = ({ data }) => {
+  // eslint-disable-next-line no-unused-vars
   const [inputValue, setInputValue] = useState({
     [`"${data.id}"`]: ""
   });
@@ -22,6 +24,10 @@ const Select = ({ data }) => {
       </select>
     </>
   );
+};
+
+Select.propTypes = {
+  data: shape({})
 };
 
 export default Select;

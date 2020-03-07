@@ -1,11 +1,16 @@
-import React, { dangerouslySetInnerHTML, useState } from "react";
+import React from "react";
+import { shape } from "prop-types";
 
-const Html = ({ data }) => {
-  const [inputValue, setInputValue] = useState(null);
-  const handleChange = e => {
-    setInputValue(e.target.value);
-  };
-  return <div dangerouslySetInnerHTML={{ __html: data.content }} />;
+const Html = () => {
+  // const [inputValue, setInputValue] = useState(null);
+  // const handleChange = e => {
+  //   setInputValue(e.target.value);
+  // };
+  return <div>This section TBD</div>;
+};
+
+Html.propTypes = {
+  data: shape({})
 };
 
 export default Html;

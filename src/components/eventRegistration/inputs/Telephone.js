@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { shape } from "prop-types";
 
 const Telephone = ({ data }) => {
   const [inputValue, setInputValue] = useState({
@@ -17,6 +18,10 @@ const Telephone = ({ data }) => {
       value={inputValue[data.id]}
     />
   );
+};
+
+Telephone.propTypes = {
+  data: shape({})
 };
 
 export default Telephone;
