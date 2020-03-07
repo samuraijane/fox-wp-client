@@ -45,6 +45,7 @@ const fetchNavs = () => dispatch => {
     .then(response => {
       if (response && response.data && response.status === 200) {
         dispatch(fetchPages(response.data));
+        dispatch(setNavsCount(response.data.length));
         dispatch(fetchSuccess("navs", response.data));
       }
       // TODO deal with responses that are not 200
@@ -77,6 +78,7 @@ const fetchPosts = () => dispatch => {
     .get(url, options)
     .then(response => {
       if (response && response.data && response.status === 200) {
+        dispatch(setPostsCount(response.data.length));
         dispatch(fetchSuccess("posts", response.data));
       }
       // TODO deal with responses that are not 200
@@ -101,7 +103,7 @@ const fetchRegister = headers => dispatch => {
 };
 
 const fetchFail = (type, error) => {
-  console.log(`The fetch for ${type} failed with error ${error}`);
+  console.error(`The fetch for ${type} failed with error ${error}`);
 };
 
 const fetchSuccess = (type, data) => {
@@ -135,4 +137,18 @@ const fetchSuccess = (type, data) => {
       data
     };
   }
+};
+
+const setNavsCount = navsCount => {
+  return {
+    type: types.SET_STATS_NAVS_COUNT,
+    navsCount
+  };
+};
+
+const setPostsCount = postsCount => {
+  return {
+    type: types.SET_STATS_POSTS_COUNT,
+    postsCount
+  };
 };

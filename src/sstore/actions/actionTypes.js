@@ -4,4 +4,6 @@ export const SET_NAVS = "SET_NAVS";
 export const SET_PAGES = "SET_PAGES";
 export const SET_POSTS = "SET_POSTS";
 export const SET_REGISTER_FIELDS = "SET_REGISTER_FIELDS";
+export const SET_STATS_NAVS_COUNT = "SET_STATS_NAVS_COUNT";
+export const SET_STATS_POSTS_COUNT = "SET_STATS_POSTS_COUNT";
 export const SET_TOKEN = "SET_TOKEN";

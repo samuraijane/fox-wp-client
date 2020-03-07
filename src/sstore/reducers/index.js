@@ -1,6 +1,14 @@
 import { combineReducers } from "redux";
 
-import { isPaypal, navs, pages, posts, registerFields, token } from "./root";
+import {
+  isPaypal,
+  navs,
+  pages,
+  posts,
+  registerFields,
+  stats,
+  token
+} from "./root";
 
 const rootReducer = combineReducers({
   isPaypal,
@@ -8,6 +16,7 @@ const rootReducer = combineReducers({
   pages,
   posts,
   registerFields,
+  stats,
   token
 });
 

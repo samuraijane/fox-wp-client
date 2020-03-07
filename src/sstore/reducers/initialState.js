@@ -5,6 +5,10 @@ const initialState = {
   pages: [],
   posts: [],
   registerFields: {},
+  stats: {
+    navsCount: 9999,
+    postsCount: 0
+  },
   token: {}
 };
 

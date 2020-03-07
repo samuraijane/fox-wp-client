@@ -1,7 +1,7 @@
 import Account from "./account/Account";
 import Checkout from "./checkout/Checkout";
+import Compete from "./eventRegistration/EventRegistration";
 import Cta from "./cta/Cta";
-import EventRegistration from "./eventRegistration/EventRegistration";
 import Home from "./home/Home";
 import Loading from "./loading/Loading";
 import Message from "./message/Message";
@@ -13,8 +13,8 @@ import Register from "./register/Register";
 export {
   Account,
   Checkout,
+  Compete,
   Cta,
-  EventRegistration,
   Home,
   Loading,
   Message,
