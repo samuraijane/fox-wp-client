@@ -16,12 +16,12 @@ export const fetch = (type) => (dispatch) => {
   if (type === "register") dispatch(fetchRegister());
   if (type === "token") dispatch(fetchAuthToken());
 };
-
+const wpUrl = process.env.BASE_URL_WP;
 // eslint-disable-next-line no-unused-vars
 const fetchAuthToken = () => (dispatch) => {
   axios({
     method: "post",
-    url: `${process.env.BASE_URL_WP}${API.token}`,
+    url: `${wpUrl}${API.token}`,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
@@ -41,7 +41,7 @@ const fetchAuthToken = () => (dispatch) => {
 // eslint-disable-next-line no-unused-vars
 const fetchClasses = (classes) => (dispatch) => {
   axios
-    .get(`${process.env.BASE_URL_WP}${API.classes}`, options)
+    .get(`${wpUrl}${API.classes}`, options)
     .then((response) => {
       if (response && response.data && response.status === 200) {
         dispatch(fetchSuccess("classes", response.data.acf.classes));
@@ -55,7 +55,7 @@ const fetchClasses = (classes) => (dispatch) => {
 
 const fetchNavs = () => (dispatch) => {
   axios
-    .get(`${process.env.BASE_URL_WP}${API.navs}`, options)
+    .get(`${wpUrl}${API.navs}`, options)
     .then((response) => {
       if (response && response.data && response.status === 200) {
         dispatch(fetchPages(response.data));
@@ -71,7 +71,7 @@ const fetchNavs = () => (dispatch) => {
 
 const fetchPages = (pages) => (dispatch) => {
   pages.map((page) => {
-    const url = `${process.env.BASE_URL_WP}/${API.page}/${page.object_id}`;
+    const url = `${wpUrl}/${API.page}/${page.object_id}`;
     // axios.get(URL, { params:{}, headers: { 'Authorization': AuthStr } })
     axios
       .get(url, options)
@@ -86,7 +86,7 @@ const fetchPages = (pages) => (dispatch) => {
 };
 
 const fetchPosts = () => (dispatch) => {
-  const url = `${process.env.BASE_URL_WP}/wp-json/udf/v1/posts`;
+  const url = `${wpUrl}/wp-json/udf/v1/posts`;
   // axios.get(URL, { params:{}, headers: { 'Authorization': AuthStr } })
   axios
     .get(url, options)
@@ -104,7 +104,7 @@ const fetchPosts = () => (dispatch) => {
 const fetchRegister = (headers) => (dispatch) => {
   const theToken = localStorage.getItem("udfToken");
   axios
-    .get(`${process.env.BASE_URL_WP}${API.register}`, {
+    .get(`${wpUrl}${API.register}`, {
       headers: {
         Authorization: `Bearer ${theToken}`,
       },
