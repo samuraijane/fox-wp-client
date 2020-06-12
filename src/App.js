@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
@@ -29,7 +29,6 @@ const App = props => {
     );
   } else {
     const routes = props.pages.map((route, index) => {
-      console.log("rat", route);
       return (
         <CustomRoute
           exact={true}

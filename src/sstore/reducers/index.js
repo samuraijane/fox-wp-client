@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 
 import {
+  classes,
   isPaypal,
   navs,
   pages,
@@ -11,6 +12,7 @@ import {
 } from "./root";
 
 const rootReducer = combineReducers({
+  classes,
   isPaypal,
   navs,
   pages,

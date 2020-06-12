@@ -13,7 +13,7 @@ const Input = ({ data, type }) => {
     email: Name,
     usra: Name,
     vehicle: Name,
-    emergencycontact: Name
+    emergencycontact: Name,
   };
 
   if (data && data.length > 0) {
@@ -38,7 +38,7 @@ const Input = ({ data, type }) => {
 };
 
 Input.propTypes = {
-  pageData: shape({})
+  pageData: shape({}),
 };
 
 export default Input;

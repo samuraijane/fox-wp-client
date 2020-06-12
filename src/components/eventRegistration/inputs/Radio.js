@@ -4,9 +4,9 @@ import { shape } from "prop-types";
 const Radio = ({ data }) => {
   // eslint-disable-next-line no-unused-vars
   const [inputValue, setInputValue] = useState({
-    [`"${data.id}"`]: ""
+    [`"${data.id}"`]: "",
   });
-  const handleClick = e => {
+  const handleClick = (e) => {
     setInputValue({ [`"${data.id}"`]: e.target.value });
   };
   const options = data.choices.map((option, index) => {
@@ -27,7 +27,7 @@ const Radio = ({ data }) => {
 };
 
 Radio.propTypes = {
-  data: shape({})
+  data: shape({}),
 };
 
 export default Radio;

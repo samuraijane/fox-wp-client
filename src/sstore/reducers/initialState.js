@@ -1,4 +1,5 @@
 const initialState = {
+  classes: [],
   isData: false,
   isPaypal: false,
   navs: [],

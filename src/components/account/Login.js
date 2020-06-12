@@ -53,7 +53,7 @@ const Login = ({ loading }) => {
           localStorage.setItem("udf", JSON.stringify(creds));
           resetInputValues();
         } else {
-          console.log("login", response);
+          //
         }
       })
       .catch(error => {

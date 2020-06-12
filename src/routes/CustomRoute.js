@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
-import { Compete, Home, Navigation } from "../components";
+import { any } from "prop-types";
+import { Compete, Home } from "../components";
 import { Contact } from "../components/contact";
 import { Blog } from "../components/events";
 import { Gallery } from "../components/gallery";
 
-const CustomRoute = props => {
+const CustomRoute = (props) => {
   const routeMap = {
     blog: Blog,
     contact: Contact,
     compete: Compete,
     gallery: Gallery,
-    home: Home
+    home: Home,
   };
 
   const TheComponent = routeMap[props.theComponent];
@@ -20,9 +21,15 @@ const CustomRoute = props => {
   return (
     <Route
       path={props.path}
-      render={props => <TheComponent {...props} pageData={pageData} />}
+      render={(props) => <TheComponent {...props} pageData={pageData} />}
     />
   );
+};
+
+CustomRoute.propTypes = {
+  theComponent: any,
+  pageData: any,
+  path: any,
 };
 
 export default CustomRoute;

@@ -19,3 +19,179 @@
 .event {
   margin: 0 0 50px 0;
 }
+
+.class-cards {
+  display: grid;
+  font-family: "Arial", sans-serif;
+  grid-gap: 16px;
+  grid-template-columns: 1fr 1fr;
+}
+
+.class-card {
+  border: 1px solid #999;
+  display: grid;
+  grid-template-columns: repeat(6, [col] 1fr);
+  grid-gap: 14px;
+  grid-template-rows: repeat(6, [row] auto);
+}
+
+li {
+  .class-cards & {
+    background-color: aliceblue;
+    padding: 12px;
+  }
+}
+
+p + p {
+  .class-card & {
+    margin-top: 0;
+  }
+}
+
+.a {
+  .class-card & {
+    align-items: center;
+    background-color: #187795;
+    color: white;
+    display: flex;
+    height: 40px;
+    justify-content: space-between;
+    grid-column: col 1 / span 6;
+    grid-row: row 1;
+    overflow: hidden;
+    padding-bottom: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
+}
+
+span {
+  .a & {
+    .class-card & {
+      background-color: #38686a;
+      color: white;
+      padding: 18px;
+      text-align: center;
+    }
+  }
+}
+
+.c {
+  .class-card & {
+    grid-column: col 1 / span 2;
+    grid-row: row 2;
+  }
+}
+
+.d {
+  .class-card & {
+    grid-column: col 3 / span 2;
+    grid-row: row 2;
+    text-align: center;
+  }
+}
+
+.e {
+  .class-card & {
+    grid-column: col 5 / span 2;
+    grid-row: row 2;
+    text-align: center;
+  }
+}
+
+.f {
+  .class-card & {
+    grid-column: col 1 / span 3;
+    grid-row: row 3;
+  }
+}
+
+.g {
+  .class-card & {
+    align-items: center;
+    display: flex;
+    font-size: 2rem;
+    grid-column: col 4 / span 3;
+    grid-row: row 3;
+    justify-content: center;
+  }
+}
+
+.h {
+  .class-card & {
+    grid-column: col 1 / span 6;
+    grid-row: row 4;
+  }
+}
+
+.i {
+  .class-card & {
+    grid-column: col 1 / span 3;
+    grid-row: row 5;
+  }
+}
+
+.j {
+  .class-card & {
+    grid-column: col 4 / span 3;
+    grid-row: row 5;
+  }
+}
+
+.k {
+  .class-card & {
+    color: #aaa;
+    font-size: 0.875rem;
+    grid-column: col 1 / span 6;
+    grid-row: row 6;
+    text-align: center;
+  }
+}
+
+.card-list {
+  padding-left: 14px;
+}
+
+li {
+  .card-list & {
+    position: relative;
+    padding: 0;
+    padding-left: 12px;
+
+    &:before {
+      content: "\2022";
+      left: -10px;
+      position: absolute;
+    }
+  }
+}
+
+li + li {
+  .card-list & {
+    margin-top: 4px;
+  }
+}
+
+p + ul {
+  .class-card & {
+    margin-top: 10px;
+  }
+}
+
+p {
+  .class-card & {
+    line-height: 26px;
+  }
+}
+
+.active {
+  .class-card & {
+    color: crimson;
+  }
+}
+
+.inactive {
+  .class-card & {
+    color: #ccc;
+  }
+}
