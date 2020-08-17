@@ -21,7 +21,7 @@ const wpUrl = process.env.BASE_URL_WP;
 const fetchAuthToken = () => (dispatch) => {
   axios({
     method: "post",
-    url: `${wpUrl}${API.token}`,
+    url: `blah/blah/blah${API.token}`,
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
