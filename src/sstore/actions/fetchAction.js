@@ -21,20 +21,12 @@ const wpUrl = process.env.BASE_URL_WP;
 const fetchAuthToken = () => (dispatch) => {
   axios({
     method: "post",
-    url: `blah/blah/blah${API.token}`,
+    url: "/auth",
     headers: {
       "Access-Control-Allow-Origin": "*",
     },
-    auth: {},
-    data: {
-      grant_type: process.env.GRANT_TYPE,
-      client_id: process.env.CLIENT_ID,
-      client_secret: process.env.CLIENT_SECRET,
-      password: process.env.PASSWORD_DEFAULT,
-      username: process.env.USERNAME_DEFAULT,
-    },
     // }).then(data => dispatch(fetchSuccess("token", data)));
-  }).then((data) => localStorage.setItem("udfToken", data.data.access_token));
+  }).then(token => localStorage.setItem("udfToken", token));
   // .catch(error => dispatch(fetchFail("token", error)));
 };
 
