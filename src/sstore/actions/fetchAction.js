@@ -16,7 +16,7 @@ export const fetch = (type) => (dispatch) => {
   if (type === "register") dispatch(fetchRegister());
   if (type === "token") dispatch(fetchAuthToken());
 };
-const wpUrl = process.env.BASE_URL_WP;
+const wpUrl = "https://zorro.matthewday.net";
 // eslint-disable-next-line no-unused-vars
 const fetchAuthToken = () => (dispatch) => {
   axios({
