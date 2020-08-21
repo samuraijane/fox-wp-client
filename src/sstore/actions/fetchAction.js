@@ -14,7 +14,7 @@ export const fetch = (type) => (dispatch) => {
   if (type === "navs") dispatch(fetchNavs());
   if (type === "posts") dispatch(fetchPosts());
   if (type === "register") dispatch(fetchRegister());
-  if (type === "token") dispatch(fetchAuthToken());
+  //if (type === "token") dispatch(fetchAuthToken());
 };
 const wpUrl = "https://zorro.matthewday.net";
 // eslint-disable-next-line no-unused-vars
@@ -26,7 +26,8 @@ const fetchAuthToken = () => (dispatch) => {
       "Access-Control-Allow-Origin": "*",
     },
     // }).then(data => dispatch(fetchSuccess("token", data)));
-  }).then(token => localStorage.setItem("udfToken", token));
+  }).then(token => localStorage.setItem("udfToken", token))
+  .catch(error => console.error('Error attempting to reach database', error.message))
   // .catch(error => dispatch(fetchFail("token", error)));
 };
 

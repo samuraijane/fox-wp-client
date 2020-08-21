@@ -5,11 +5,11 @@ import { shape } from "prop-types";
 import { Payment } from "../";
 import {
   Break,
+  Date,
   Email,
   Html,
   List,
   Radio,
-  Select,
   Telephone,
   Text,
 } from "./inputs";
@@ -18,13 +18,14 @@ import {
 const FormSection = ({ handler, formSection }) => {
   const inputTypeMap = {
     address: Text,
-    age: Select,
+    birthdate: Date,
     email: Email,
     emergencycontact: Html,
     gender: Radio,
     name: Text,
     phone: Telephone,
     sectionbreak: Break, // TODO
+    skilllevel: Radio,
     sponsors: List, // TODO
     usra: Html,
     vehicle: Html,
@@ -36,8 +37,23 @@ const FormSection = ({ handler, formSection }) => {
     // const formData = extractFormData(data);
   };
 
-  if (formSection.fields.length === 11) {
-    // TODO remove hard-coded check
+  // for now, we are using Gravity Forms' cssClass attribute to group fields into sections
+  // const groupBySection = fields => {
+  //   let packages = [];
+  //   let section = null;
+  //   let groupedFields = [];
+  //   fields.filter(field => field.cssClass).map(field => {
+  //     if(!section) section = field.cssClass
+  //     if(section === field.cssClass) {
+  //       packages.push(field);
+  //     } else {
+  //
+  //     }
+  //   })
+  // }
+
+  // TODO remove hard-coded check
+  if (formSection.fields.length === 12) {
     const sections = formSection.fields.map((section, index) => {
       const Input = inputTypeMap[section.label.toLowerCase().replace(/ /g, "")];
       return (
