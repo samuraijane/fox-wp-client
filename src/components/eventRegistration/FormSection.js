@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types, react/no-unescaped-entities */
 
-import React from "react";
+import React, { useState } from "react";
 import { shape } from "prop-types";
 import { Payment } from "../";
 import {
@@ -37,6 +37,8 @@ const FormSection = ({ handler, formSection }) => {
     vehiclemodel: Text,
   };
 
+  const [activeFormSection, setActiveFormSection] = useState(0);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // const data = new FormData(e.target);
@@ -64,13 +66,21 @@ const FormSection = ({ handler, formSection }) => {
           </div>
         );
       });
-      return <div className="form-section" key={index}>{sectionc}</div>
+      return (
+        <>
+          {activeFormSection === index && (
+            <div className="form-section" key={index}>{sectionc}</div>
+          )}
+        </>
+      );
     });
     return (
       <>
         <Payment name={{ given_name: "Billy", surname: "Smith" }} />
         <form onSubmit={handleSubmit}>
           <div>{sections}</div>
+          <button onClick={() => setActiveFormSection(activeFormSection - 1)}>Previous</button>
+          <button onClick={() => setActiveFormSection(activeFormSection + 1)}>Next</button>
           <button type="submit">Submit</button>
         </form>
       </>
