@@ -4,31 +4,37 @@ import React from "react";
 import { shape } from "prop-types";
 import { Payment } from "../";
 import {
-  Break,
-  Date,
   Email,
-  Html,
   List,
   Radio,
+  Select,
   Telephone,
   Text,
+  TextArea
 } from "./inputs";
+import groupBy from "./utils/groupBy";
 // import extractFormData from "../../utils/extractFormData";
 
 const FormSection = ({ handler, formSection }) => {
   const inputTypeMap = {
     address: Text,
-    birthdate: Date,
+    birthdate: Text,
     email: Email,
-    emergencycontact: Html,
+    emergencycontactname: Text,
+    emergencycontacttelephone: Text,
+    engineccs: Select,
+    enginetype: Radio,
     gender: Radio,
     name: Text,
     phone: Telephone,
-    sectionbreak: Break, // TODO
     skilllevel: Radio,
     sponsors: List, // TODO
-    usra: Html,
-    vehicle: Html,
+    usraclass: Text,
+    usradivision: Text,
+    usramemberno: Text,
+    usraplateno: Text,
+    vehiclemake: Text,
+    vehiclemodel: Text,
   };
 
   const handleSubmit = (e) => {
@@ -38,51 +44,39 @@ const FormSection = ({ handler, formSection }) => {
   };
 
   // for now, we are using Gravity Forms' cssClass attribute to group fields into sections
-  // const groupBySection = fields => {
-  //   let packages = [];
-  //   let section = null;
-  //   let groupedFields = [];
-  //   fields.filter(field => field.cssClass).map(field => {
-  //     if(!section) section = field.cssClass
-  //     if(section === field.cssClass) {
-  //       packages.push(field);
-  //     } else {
-  //
-  //     }
-  //   })
-  // }
-
-  // TODO remove hard-coded check
-  if (formSection.fields.length === 12) {
-    const sections = formSection.fields.map((section, index) => {
-      const Input = inputTypeMap[section.label.toLowerCase().replace(/ /g, "")];
-      return (
-        <div key={index}>
-          <h2>{section.label}</h2>
-          <Input
-            data={section}
-            handler={
-              section.label === "Age" || section.label === "Gender"
-                ? handler
-                : null
-            }
-          />
-        </div>
-      );
+  if (formSection.fields.length === 18) {
+    const grouped = groupBy(formSection.fields, 'cssClass');
+    const sections = Object.keys(grouped).map((section, index) => {
+      console.log('pota section', grouped[section]);
+      const sectionc = grouped[section].map((field, index2) => {
+        const Input = inputTypeMap[field.label.toLowerCase().replace(/ /g, "")];
+        return (
+          <div key={index2}>
+            <h2>{field.label}</h2>
+            <Input
+              data={field}
+              handler={
+                field.label === "Age" || field.label === "Gender"
+                  ? handler
+                  : null
+              }
+            />
+          </div>
+        );
+      });
+      return <div className="form-section" key={index}>{sectionc}</div>
     });
-
     return (
       <>
         <Payment name={{ given_name: "Billy", surname: "Smith" }} />
         <form onSubmit={handleSubmit}>
-          <p>{formSection.title}</p>
-          <p>{formSection.description}</p>
           <div>{sections}</div>
           <button type="submit">Submit</button>
         </form>
       </>
     );
   }
+
   return <p>Waiting...</p>;
 };
 

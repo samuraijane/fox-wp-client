@@ -1,11 +1,9 @@
-import Break from "./Break";
-import Date from "./Date";
 import Email from "./Email";
-import Html from "./Html";
 import List from "./List";
 import Radio from "./Radio";
 import Select from "./Select";
 import Telephone from "./Telephone";
 import Text from "./Text";
+import TextArea from "./TextArea";
 
-export { Break, Date, Email, Html, List, Radio, Select, Telephone, Text };
+export { Email, List, Radio, Select, Telephone, Text, TextArea };
