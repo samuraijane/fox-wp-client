@@ -3,15 +3,14 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 import { Payment } from "../";
-import {
-  Email,
-  List,
-  Radio,
-  Select,
-  Telephone,
-  Text,
-  TextArea
-} from "./inputs";
+import Date from '../formElements/input/Date.js';
+import Email from '../formElements/input/Email.js';
+import Radio from '../formElements/input/Radio.js';
+import Select from '../formElements/Select.js';
+import Telephone from '../formElements/input/Telephone.js';
+import Text from '../formElements/input/Text.js';
+import TextArea from '../formElements/TextArea.js';
+
 import groupBy from "./utils/groupBy";
 // import extractFormData from "../../utils/extractFormData";
 
@@ -28,7 +27,7 @@ const FormSection = ({ handler, formSection }) => {
     name: Text,
     phone: Telephone,
     skilllevel: Radio,
-    sponsors: List, // TODO
+    sponsors: TextArea,
     usraclass: Text,
     usradivision: Text,
     usramemberno: Text,
@@ -67,11 +66,11 @@ const FormSection = ({ handler, formSection }) => {
         );
       });
       return (
-        <>
+        <div className="form-section" key={index*100}>
           {activeFormSection === index && (
-            <div className="form-section" key={index}>{sectionc}</div>
+            <>{sectionc}</>
           )}
-        </>
+        </div>
       );
     });
     return (

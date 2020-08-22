@@ -56,10 +56,8 @@ const EventRegistration = (props) => {
         handler={handleApplicableFields}
         formSection={props.registerFields}
       />
-      {props.classes.length > 0 ? (
+      {props.classes.length > 0 && (
         <CompetitionClasses classes={props.classes} />
-      ) : (
-        ""
       )}
     </>
   );
