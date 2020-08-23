@@ -16,24 +16,29 @@ import groupBy from "./utils/groupBy";
 
 const FormSection = ({ handler, formSection }) => {
   const inputTypeMap = {
-    address: Text,
-    birthdate: Text,
+    address1: Text,
+    address2: Text,
+    birthdate: Date,
+    city: Text,
     email: Email,
     emergencycontactname: Text,
-    emergencycontacttelephone: Text,
+    emergencycontacttelephone: Telephone,
     engineccs: Select,
     enginetype: Radio,
+    firstname: Text,
     gender: Radio,
-    name: Text,
+    lastname: Text,
     phone: Telephone,
     skilllevel: Radio,
     sponsors: TextArea,
+    state: Text,
     usraclass: Text,
     usradivision: Text,
     usramemberno: Text,
     usraplateno: Text,
     vehiclemake: Text,
     vehiclemodel: Text,
+    zipcode: Text,
   };
 
   const [activeFormSection, setActiveFormSection] = useState(0);
@@ -45,7 +50,7 @@ const FormSection = ({ handler, formSection }) => {
   };
 
   // for now, we are using Gravity Forms' cssClass attribute to group fields into sections
-  if (formSection.fields.length === 18) {
+  if (formSection.fields.length === 23) {
     const grouped = groupBy(formSection.fields, 'cssClass');
     const sections = Object.keys(grouped).map((section, index) => {
       console.log('pota section', grouped[section]);
@@ -53,7 +58,6 @@ const FormSection = ({ handler, formSection }) => {
         const Input = inputTypeMap[field.label.toLowerCase().replace(/ /g, "")];
         return (
           <div key={index2}>
-            <h2>{field.label}</h2>
             <Input
               data={field}
               handler={
