@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Radio = ({ data }) => {
+const Radio = ({ data, saveFieldData, value }) => {
   const { choices, id, isRequired, label } = data;
 
-  const [selected, setSelected] = useState("");
-
   const handleChange = e => {
-    setSelected(e.target.value);
+    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
   };
 
   const options = choices.map((choice, index) => {
@@ -15,7 +13,7 @@ const Radio = ({ data }) => {
     return (
       <label key={key}>
         <input
-          checked={choice.value === selected}
+          checked={choice.value === value}
           id={id}
           key={index}
           name={id}

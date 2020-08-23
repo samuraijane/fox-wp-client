@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Text = ({ data }) => {
+const Text = ({ data, saveFieldData, value }) => {
   const { id, isRequired, label, maxLength } = data;
-
-  const [value, setValue] = useState("");
 
   const isCharAllowed = char => {
         // space, comma, period, 0 through 9
@@ -22,9 +20,11 @@ const Text = ({ data }) => {
     const lastChar = e.target.value.slice(-1);
     const keyCode = lastChar ? lastChar.charCodeAt() : null;
     if (isCharAllowed(keyCode)) {
-      setValue(e.target.value);
+      saveFieldData([id.match(/[^_]*/gi)], e.target.value);
     }
-    if (!keyCode) setValue("");
+    if (!keyCode) {
+      saveFieldData([id.match(/[^_]*/gi)], "");
+    }
   };
 
     return (

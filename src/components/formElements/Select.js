@@ -1,13 +1,11 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Select = ({ data }) => {
+const Select = ({ data, saveFieldData, value }) => {
   const { choices, id, isRequired, label } = data;
 
-  const [selected, setSelected] = useState("");
-
   const handleChange = e => {
-    setSelected(e.target.value);
+    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
   };
 
   const options = choices.map((choice, index) => {
@@ -28,11 +26,10 @@ const Select = ({ data }) => {
         onChange={handleChange}
         id={id}
         name={id}
-        value={selected}
+        value={value}
       >
         {options}
       </select>
-      <p>{selected}</p>
     </>
   );
 };

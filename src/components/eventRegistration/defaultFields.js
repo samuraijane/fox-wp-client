@@ -1,0 +1,27 @@
+const defaultFields = {
+  address1: "",
+  address2: "",
+  birthdate: "",
+  city: "",
+  email: "",
+  emergencycontactname: "",
+  emergencycontacttelephone: "",
+  engineccs: "",
+  enginetype: "",
+  firstname: "",
+  gender: "",
+  lastname: "",
+  phone: "",
+  skilllevel: "",
+  sponsors: "",
+  state: "",
+  usraclass: "",
+  usradivision: "",
+  usramemberno: "",
+  usraplateno: "",
+  vehiclemake: "",
+  vehiclemodel: "",
+  zipcode: "",
+};
+
+export default defaultFields;

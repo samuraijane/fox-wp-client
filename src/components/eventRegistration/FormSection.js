@@ -11,6 +11,7 @@ import Telephone from '../formElements/input/Telephone.js';
 import Text from '../formElements/input/Text.js';
 import TextArea from '../formElements/TextArea.js';
 
+import defaultFields from './defaultFields';
 import groupBy from "./utils/groupBy";
 // import extractFormData from "../../utils/extractFormData";
 
@@ -43,7 +44,7 @@ const FormSection = ({ formSection }) => {
 
   const [activeFormSection, setActiveFormSection] = useState(0);
 
-  const [formFields, setFormFields] = useState({})
+  const [formFields, setFormFields] = useState(defaultFields);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -51,22 +52,32 @@ const FormSection = ({ formSection }) => {
     // const formData = extractFormData(data);
   };
 
+  const saveFieldData = (key, value) => {
+    const parsedKey = key[0][0];
+    const formFieldsUpdated = Object.assign({}, formFields, {
+      ...formFields,
+      [parsedKey]: value
+    })
+    setFormFields(formFieldsUpdated);
+  }
+
   // for now, we are using Gravity Forms' cssClass attribute to group fields into sections
   if (formSection.fields.length === 23) {
     const grouped = groupBy(formSection.fields, 'cssClass');
     const sections = Object.keys(grouped).map((section, index) => {
-      console.log('pota section', grouped[section]);
       const sectionc = grouped[section].map((field, index2) => {
-        const Input = inputTypeMap[field.label.toLowerCase().replace(/ /g, "")];
+        const label2 = field.label.toLowerCase().replace(/ /g, "");
+        const Input = inputTypeMap[label2];
         const fieldWithNewId = Object.assign({}, field, {
           ...field,
-          id: `${field.label.toLowerCase().replace(/ /g, "")}_${field.id}`
+          id: `${label2}_${field.id}`
         })
         return (
           <Input
             key={index2}
             data={fieldWithNewId}
-            handler={() => alert('hey')}
+            saveFieldData={saveFieldData}
+            value={formFields[label2]}
           />
         );
       });

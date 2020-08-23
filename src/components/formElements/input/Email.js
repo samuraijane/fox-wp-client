@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Email = ({ data }) => {
+const Email = ({ data, saveFieldData, value }) => {
   const { id, isRequired, label, maxLength } = data;
 
-  const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
 
   const handleChange = e => {
@@ -15,7 +14,7 @@ const Email = ({ data }) => {
     } else {
       setIsValidEmail(false);
     }
-    setEmail(e.target.value);
+    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
   };
 
   return (
@@ -28,7 +27,7 @@ const Email = ({ data }) => {
         onChange={handleChange}
         required={isRequired}
         type="email"
-        value={email}
+        value={value}
       />
     </>
   );

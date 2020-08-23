@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Telephone = ({ data }) => {
+const Telephone = ({ data, saveFieldData, value }) => {
   const { id, isRequired, label, maxLength } = data;
 
-  const [telephone, setTelephone] = useState("");
   const [isValidTelephone, setIsValidTelephone] = useState(false);
 
   const handleChange = e => {
@@ -16,7 +15,7 @@ const Telephone = ({ data }) => {
     } else {
       setIsValidTelephone(false);
     }
-    setTelephone(target);
+    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
   };
   return (
     <>
@@ -28,7 +27,7 @@ const Telephone = ({ data }) => {
         onChange={handleChange}
         required={isRequired}
         type="tel"
-        value={telephone}
+        value={value}
       />
     </>
   );

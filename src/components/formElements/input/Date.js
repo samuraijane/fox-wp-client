@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Date = ({ data }) => {
+const Date = ({ data, saveFieldData, value }) => {
   const { id, isRequired, label } = data;
+
+  const handleChange = e => {
+    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
+  };
 
   return (
     <>
@@ -10,8 +14,10 @@ const Date = ({ data }) => {
       <input
         id={id}
         name={id}
+        onChange={handleChange}
         required={isRequired}
         type="date"
+        value={value}
       />
     </>
   );
