@@ -8,7 +8,6 @@ import Message from "./message/Message";
 import Navigation from "./navigation/Navigation";
 import Page404 from "./page404/Page404";
 import Payment from "./payment/Payment";
-import Register from "./register/Register";
 
 export {
   Account,
@@ -20,6 +19,5 @@ export {
   Message,
   Navigation,
   Page404,
-  Payment,
-  Register
+  Payment
 };
