@@ -4,8 +4,6 @@ import { shape } from "prop-types";
 const Radio = ({ data }) => {
   const { choices, id, isRequired, label } = data;
 
-  const id2 = `${label}_${id}`;
-
   const [selected, setSelected] = useState("");
 
   const handleChange = e => {
@@ -13,14 +11,14 @@ const Radio = ({ data }) => {
   };
 
   const options = choices.map((choice, index) => {
-    const key = `${id2}_${index}`;
+    const key = `${id}_${index}`;
     return (
       <label key={key}>
         <input
           checked={choice.value === selected}
-          id={id2}
+          id={id}
           key={index}
-          name={id2}
+          name={id}
           onChange={handleChange}
           required={isRequired}
           type="radio"

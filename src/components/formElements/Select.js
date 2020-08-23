@@ -4,8 +4,6 @@ import { shape } from "prop-types";
 const Select = ({ data }) => {
   const { choices, id, isRequired, label } = data;
 
-  const id2 = `${label}_${id}`;
-
   const [selected, setSelected] = useState("");
 
   const handleChange = e => {
@@ -13,7 +11,7 @@ const Select = ({ data }) => {
   };
 
   const options = choices.map((choice, index) => {
-    const key = `${id2}_${index}`;
+    const key = `${id}_${index}`;
     return (
       <option
         key={key}
@@ -25,11 +23,11 @@ const Select = ({ data }) => {
   });
   return (
     <>
-      <label htmlFor={id2}>Select Your Engine Size</label>
+      <label htmlFor={id}>Select Your Engine Size</label>
       <select
         onChange={handleChange}
-        id={id2}
-        name={id2}
+        id={id}
+        name={id}
         value={selected}
       >
         {options}

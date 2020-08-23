@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types, react/no-unescaped-entities */
 
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { shape } from "prop-types";
 import { Payment } from "../";
 import Date from '../formElements/input/Date.js';
@@ -43,6 +43,10 @@ const FormSection = ({ handler, formSection }) => {
 
   const [activeFormSection, setActiveFormSection] = useState(0);
 
+  const [formFields, setFormFields] = useState({
+
+  })
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // const data = new FormData(e.target);
@@ -56,32 +60,37 @@ const FormSection = ({ handler, formSection }) => {
       console.log('pota section', grouped[section]);
       const sectionc = grouped[section].map((field, index2) => {
         const Input = inputTypeMap[field.label.toLowerCase().replace(/ /g, "")];
+        const fieldWithNewId = Object.assign({}, field, {
+          ...field,
+          id: `${field.label.toLowerCase().replace(/ /g, "")}_${field.id}`
+        })
         return (
-          <div key={index2}>
-            <Input
-              data={field}
-              handler={
-                field.label === "Age" || field.label === "Gender"
-                  ? handler
-                  : null
-              }
-            />
-          </div>
+          <Input
+            key={index2}
+            data={fieldWithNewId}
+            handler={
+              field.label === "Age" || field.label === "Gender"
+                ? handler
+                : null
+            }
+          />
         );
       });
       return (
-        <div className="form-section" key={index*100}>
+        <Fragment key={index*100}>
           {activeFormSection === index && (
-            <>{sectionc}</>
+            <fieldset className="form-section">
+              {sectionc}
+            </fieldset>
           )}
-        </div>
+        </Fragment>
       );
     });
     return (
       <>
         <Payment name={{ given_name: "Billy", surname: "Smith" }} />
         <form onSubmit={handleSubmit}>
-          <div>{sections}</div>
+          {sections}
           <button onClick={() => setActiveFormSection(activeFormSection - 1)}>Previous</button>
           <button onClick={() => setActiveFormSection(activeFormSection + 1)}>Next</button>
           <button type="submit">Submit</button>

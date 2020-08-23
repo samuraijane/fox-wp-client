@@ -4,8 +4,6 @@ import { shape } from "prop-types";
 const TextArea = ({ data }) => {
   const { description, id, isRequired, label, maxLength } = data;
 
-  const id2 = `${label}_${id}`;
-
   const [value, setValue] = useState("");
 
   const isCharAllowed = char => {
@@ -33,7 +31,7 @@ const TextArea = ({ data }) => {
 
   return (
     <textarea
-      id={id2}
+      id={id}
       onChange={handleChange}
       value={value}
     />

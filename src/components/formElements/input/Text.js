@@ -4,8 +4,6 @@ import { shape } from "prop-types";
 const Text = ({ data }) => {
   const { id, isRequired, label, maxLength } = data;
 
-  const id2 = `${label}_${id}`;
-
   const [value, setValue] = useState("");
 
   const isCharAllowed = char => {
@@ -31,11 +29,11 @@ const Text = ({ data }) => {
 
     return (
       <>
-        <label htmlFor={id2}>{label}</label>
+        <label htmlFor={id}>{label}</label>
         <input
-          id={id2}
+          id={id}
           required={isRequired}
-          name={id2}
+          name={id}
           onChange={handleChange}
           maxLength={maxLength}
           type="text"

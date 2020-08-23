@@ -4,14 +4,12 @@ import { shape } from "prop-types";
 const Date = ({ data }) => {
   const { id, isRequired, label } = data;
 
-  const id2 = `${label}_${id}`;
-
   return (
     <>
-      <label htmlFor={id2}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        id={id2}
-        name={id2}
+        id={id}
+        name={id}
         required={isRequired}
         type="date"
       />

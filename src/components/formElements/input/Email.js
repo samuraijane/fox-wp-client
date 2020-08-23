@@ -4,8 +4,6 @@ import { shape } from "prop-types";
 const Email = ({ data }) => {
   const { id, isRequired, label, maxLength } = data;
 
-  const id2 = `${label}_${id}`;
-
   const [email, setEmail] = useState("");
   const [isValidEmail, setIsValidEmail] = useState(false);
 
@@ -22,11 +20,11 @@ const Email = ({ data }) => {
 
   return (
     <>
-      <label htmlFor={id2}>{label}</label>
+      <label htmlFor={id}>{label}</label>
       <input
-        id={id2}
+        id={id}
         maxLength={maxLength}
-        name={id2}
+        name={id}
         onChange={handleChange}
         required={isRequired}
         type="email"
