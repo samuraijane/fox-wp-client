@@ -1,27 +1,26 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Email = ({ data }) => {
-  const [inputValue, setInputValue] = useState({
-    [`"${data.id}"`]: ""
-  });
-  const handleChange = e => {
-    setInputValue({ [`"${data.id}"`]: e.target.value });
-  };
+const Date = ({ data }) => {
+  const { id, isRequired, label } = data;
+
+  const id2 = `${label}_${id}`;
+
   return (
-    <input
-      id={data.id}
-      name={data.id}
-      onChange={handleChange}
-      placeholder={data.label}
-      type="date"
-      value={inputValue[data.id]}
-    />
+    <>
+      <label htmlFor={id2}>{label}</label>
+      <input
+        id={id2}
+        name={id2}
+        required={isRequired}
+        type="date"
+      />
+    </>
   );
 };
 
-Email.propTypes = {
+Date.propTypes = {
   data: shape({})
 };
 
-export default Email;
+export default Date;

@@ -2,21 +2,37 @@ import React, { useState } from "react";
 import { shape } from "prop-types";
 
 const Email = ({ data }) => {
-  const [inputValue, setInputValue] = useState({
-    [`"${data.id}"`]: ""
-  });
+  const { id, isRequired, label, maxLength } = data;
+
+  const id2 = `${label}_${id}`;
+
+  const [email, setEmail] = useState("");
+  const [isValidEmail, setIsValidEmail] = useState(false);
+
   const handleChange = e => {
-    setInputValue({ [`"${data.id}"`]: e.target.value });
+    // from https://www.w3resource.com/javascript/form/email-validation.php
+    const re = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/gi;
+    if(re.test(e.target.value)) {
+      setIsValidEmail(true);
+    } else {
+      setIsValidEmail(false);
+    }
+    setEmail(e.target.value);
   };
+
   return (
-    <input
-      id={data.id}
-      name={data.id}
-      onChange={handleChange}
-      placeholder={data.label}
-      type="email"
-      value={inputValue[data.id]}
-    />
+    <>
+      <label htmlFor={id2}>{label}</label>
+      <input
+        id={id2}
+        maxLength={maxLength}
+        name={id2}
+        onChange={handleChange}
+        required={isRequired}
+        type="email"
+        value={email}
+      />
+    </>
   );
 };
 

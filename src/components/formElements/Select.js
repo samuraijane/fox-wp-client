@@ -2,26 +2,39 @@ import React, { useState } from "react";
 import { shape } from "prop-types";
 
 const Select = ({ data }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [inputValue, setInputValue] = useState({
-    [`"${data.id}"`]: ""
-  });
+  const { choices, id, isRequired, label } = data;
+
+  const id2 = `${label}_${id}`;
+
+  const [selected, setSelected] = useState("");
+
   const handleChange = e => {
-    setInputValue({ [`"${data.id}"`]: e.target.value });
+    setSelected(e.target.value);
   };
-  const options = data.choices.map((option, index) => {
+
+  const options = choices.map((choice, index) => {
+    const key = `${id2}_${index}`;
     return (
-      <option key={index} value={option.text}>
-        {option.text}
+      <option
+        key={key}
+        value={choice.value}
+      >
+        {choice.text}
       </option>
     );
   });
   return (
     <>
-      <label htmlFor={data.id}>Select something</label>
-      <select onChange={handleChange} id={data.id} name={data.id}>
+      <label htmlFor={id2}>Select Your Engine Size</label>
+      <select
+        onChange={handleChange}
+        id={id2}
+        name={id2}
+        value={selected}
+      >
         {options}
       </select>
+      <p>{selected}</p>
     </>
   );
 };

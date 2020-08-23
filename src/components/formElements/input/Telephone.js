@@ -2,21 +2,37 @@ import React, { useState } from "react";
 import { shape } from "prop-types";
 
 const Telephone = ({ data }) => {
-  const [inputValue, setInputValue] = useState({
-    [`"${data.id}"`]: ""
-  });
+  const { id, isRequired, label, maxLength } = data;
+
+  const id2 = `${label}_${id}`;
+
+  const [telephone, setTelephone] = useState("");
+  const [isValidTelephone, setIsValidTelephone] = useState(false);
+
   const handleChange = e => {
-    setInputValue({ [`"${data.id}"`]: e.target.value });
+    // https://regexlib.com/Search.aspx?k=phone&AspxAutoDetectCookieSupport=1
+    const re = /^[2-9]\d{2}-\d{3}-\d{4}$/gi;
+    const target = e.target.value.toString();
+    if(re.test(target)) {
+      setIsValidTelephone(true);
+    } else {
+      setIsValidTelephone(false);
+    }
+    setTelephone(target);
   };
   return (
-    <input
-      id={data.id}
-      name={data.id}
-      onChange={handleChange}
-      placeholder={data.label}
-      type="tel"
-      value={inputValue[data.id]}
-    />
+    <>
+      <label htmlFor={id2}>{label}</label>
+      <input
+        id={id2}
+        maxLength={maxLength}
+        name={id2}
+        onChange={handleChange}
+        required={isRequired}
+        type="tel"
+        value={telephone}
+      />
+    </>
   );
 };
 
@@ -25,5 +41,3 @@ Telephone.propTypes = {
 };
 
 export default Telephone;
-
-// pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"

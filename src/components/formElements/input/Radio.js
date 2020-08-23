@@ -2,28 +2,40 @@ import React, { useState } from "react";
 import { shape } from "prop-types";
 
 const Radio = ({ data }) => {
-  // eslint-disable-next-line no-unused-vars
-  const [inputValue, setInputValue] = useState({
-    [`"${data.id}"`]: "",
-  });
-  const handleClick = (e) => {
-    setInputValue({ [`"${data.id}"`]: e.target.value });
+  const { choices, id, isRequired, label } = data;
+
+  const id2 = `${label}_${id}`;
+
+  const [selected, setSelected] = useState("");
+
+  const handleChange = e => {
+    setSelected(e.target.value);
   };
-  const options = data.choices.map((option, index) => {
+
+  const options = choices.map((choice, index) => {
+    const key = `${id2}_${index}`;
     return (
-      <label key={index}>
+      <label key={key}>
         <input
+          checked={choice.value === selected}
+          id={id2}
           key={index}
-          name={data.id}
-          onClick={handleClick}
+          name={id2}
+          onChange={handleChange}
+          required={isRequired}
           type="radio"
-          value={option.text}
+          value={choice.value}
         />
-        {option.text}
+        {choice.text}
       </label>
     );
   });
-  return <div>{options}</div>;
+  return (
+    <>
+      <h2>{label}</h2>
+      {options}
+    </>
+  );
 };
 
 Radio.propTypes = {

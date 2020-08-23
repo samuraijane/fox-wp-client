@@ -1,31 +1,48 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { shape } from "prop-types";
 
 const Text = ({ data }) => {
-  // const [inputValue, setInputValue] = useState({});
-  // useEffect(() => {
-  //   data.inputs.map(input => {
-  //     setInputValue({ [`"${input.id}"`]: "" });
-  //   });
-  // }, []);
-  // const handleChange = e => {
-  //   setInputValue({ [`"${e.target.name}"`]: e.target.value });
-  // };
-  // const inputs = data.inputs.map((input, index) => {
-  //   if (!input.isHidden) {
-  //     return (
-  //       <input
-  //         key={index}
-  //         name={input.id}
-  //         onChange={handleChange}
-  //         placeholder={input.label}
-  //         type="text"
-  //         value={inputValue[input.id]}
-  //       />
-  //     );
-  //   }
-  // });
-  return <p>inputs</p>;
+  const { id, isRequired, label, maxLength } = data;
+
+  const id2 = `${label}_${id}`;
+
+  const [value, setValue] = useState("");
+
+  const isCharAllowed = char => {
+        // space, comma, period, 0 through 9
+    if (char === 32 || char === 44 || char === 46 || char >= 48 && char <= 57 ||
+        // a through z, A through Z
+        char >= 65 && char <= 90 || char >= 97 && char <= 122
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const handleChange = e => {
+    const lastChar = e.target.value.slice(-1);
+    const keyCode = lastChar ? lastChar.charCodeAt() : null;
+    if (isCharAllowed(keyCode)) {
+      setValue(e.target.value);
+    }
+    if (!keyCode) setValue("");
+  };
+
+    return (
+      <>
+        <label htmlFor={id2}>{label}</label>
+        <input
+          id={id2}
+          required={isRequired}
+          name={id2}
+          onChange={handleChange}
+          maxLength={maxLength}
+          type="text"
+          value={value}
+        />
+      </>
+    );
 };
 
 Text.propTypes = {
