@@ -8,17 +8,10 @@ import { fetch } from "../../sstore/actions";
 
 // eslint-disable-next-line react/prop-types
 const EventRegistration = (props) => {
-  // eslint-disable-next-line no-unused-vars
-  const [applicableClasses, setApplicableClasses] = useState(null);
-  // eslint-disable-next-line no-unused-vars
-  const [applicableFields, setApplicableFields] = useState({
-    age: 0,
-    gender: null,
-  });
+
   useEffect(() => {
     props.fetch("classes");
     props.fetch("register");
-    setApplicableClasses(props.classes.slice());
   }, []);
 
   const layouts = props.pageData.acf.layouts.map((layout, index) => {
@@ -35,13 +28,6 @@ const EventRegistration = (props) => {
     }
   });
 
-  const handleApplicableFields = (field) => {
-    const { data, kind } = field;
-    const newApplicableFields = Object.assign(applicableFields);
-    newApplicableFields[kind] = data;
-    setApplicableClasses(newApplicableFields);
-  };
-
   if (
     Object.keys(props.registerFields).length === 0 &&
     props.registerFields.constructor === Object
@@ -53,7 +39,6 @@ const EventRegistration = (props) => {
       {layouts}
       <FormSection
         classes={props.classes}
-        handler={handleApplicableFields}
         formSection={props.registerFields}
       />
       {props.classes.length > 0 && (

@@ -14,7 +14,7 @@ import TextArea from '../formElements/TextArea.js';
 import groupBy from "./utils/groupBy";
 // import extractFormData from "../../utils/extractFormData";
 
-const FormSection = ({ handler, formSection }) => {
+const FormSection = ({ formSection }) => {
   const inputTypeMap = {
     address1: Text,
     address2: Text,
@@ -43,9 +43,7 @@ const FormSection = ({ handler, formSection }) => {
 
   const [activeFormSection, setActiveFormSection] = useState(0);
 
-  const [formFields, setFormFields] = useState({
-
-  })
+  const [formFields, setFormFields] = useState({})
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -68,11 +66,7 @@ const FormSection = ({ handler, formSection }) => {
           <Input
             key={index2}
             data={fieldWithNewId}
-            handler={
-              field.label === "Age" || field.label === "Gender"
-                ? handler
-                : null
-            }
+            handler={() => alert('hey')}
           />
         );
       });
