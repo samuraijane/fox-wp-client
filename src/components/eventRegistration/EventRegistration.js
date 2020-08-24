@@ -41,9 +41,6 @@ const EventRegistration = (props) => {
         classes={props.classes}
         formSection={props.registerFields}
       />
-      {props.classes.length > 0 && (
-        <CompetitionClasses classes={props.classes} />
-      )}
     </>
   );
 };
@@ -68,3 +65,8 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EventRegistration);
+
+
+// {props.classes.length > 0 && (
+//   <CompetitionClasses classes={props.classes} />
+// )}

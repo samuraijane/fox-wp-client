@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types, react/no-unescaped-entities */
 
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { shape } from "prop-types";
 import { Payment } from "../";
+import CompetitionClasses from "./competitionClasses";
 import Date from '../formElements/input/Date.js';
 import Email from '../formElements/input/Email.js';
 import Radio from '../formElements/input/Radio.js';
@@ -15,7 +16,7 @@ import defaultFields from './defaultFields';
 import groupBy from "./utils/groupBy";
 // import extractFormData from "../../utils/extractFormData";
 
-const FormSection = ({ formSection }) => {
+const FormSection = ({ classes, formSection }) => {
   const inputTypeMap = {
     address1: Text,
     address2: Text,
@@ -43,7 +44,7 @@ const FormSection = ({ formSection }) => {
   };
 
   const [activeFormSection, setActiveFormSection] = useState(0);
-
+  const [filteredClasses, setFilteredClasses] = useState([]);
   const [formFields, setFormFields] = useState(defaultFields);
 
   const handleSubmit = (e) => {
@@ -60,6 +61,50 @@ const FormSection = ({ formSection }) => {
     })
     setFormFields(formFieldsUpdated);
   }
+
+  useEffect(() => {
+    console.log('pota useEffect');
+  }, [filteredClasses]);
+
+  const isClassMatch = (toMatch, matchAgainst=classes) => {
+    const {
+      is_active,
+      genders,
+      // ages,
+      ability_levels,
+      engine_ccs_and_cycle
+    } = matchAgainst;
+
+    const {
+      // gender,
+      // age,
+      ability_level,
+      // engine_cc,
+      //engine_cycle
+    } = formFields;
+
+    if (!is_active) return false;
+    // if (genders.indexOf("female") < 0) return false;
+    // if (age < ages.minimum || age > ages.maximum) return false;
+    if (ability_levels.indexOf("headsUp") < 0) return false;
+    // engine_ccs_and_cycle.forEach(engine => {
+    //   if (engine.cycle !== engine_cycle) return false;
+    //   if (engine_cc < engine.min_cc || engine_cc > engine.max_cc) return false;
+    // });
+    return true;
+  };
+
+  const findMatchingClasses = () => {
+    const matched = classes.filter(match => {
+      console.log('pota isClassMatch', isClassMatch(null, match));
+      return isClassMatch(null, match) === true;
+    });
+    setFilteredClasses(matched);
+  };
+
+  const handleFormSectionChange = advance => {
+    setActiveFormSection(activeFormSection + advance);
+  };
 
   // for now, we are using Gravity Forms' cssClass attribute to group fields into sections
   if (formSection.fields.length === 23) {
@@ -96,10 +141,14 @@ const FormSection = ({ formSection }) => {
         <Payment name={{ given_name: "Billy", surname: "Smith" }} />
         <form onSubmit={handleSubmit}>
           {sections}
-          <button onClick={() => setActiveFormSection(activeFormSection - 1)}>Previous</button>
-          <button onClick={() => setActiveFormSection(activeFormSection + 1)}>Next</button>
+          <button onClick={() => handleFormSectionChange(-1)}>Previous</button>
+          <button onClick={() => handleFormSectionChange(1)}>Next</button>
+          <button onClick={findMatchingClasses}>Find Matching Classes</button>
           <button type="submit">Submit</button>
         </form>
+        {filteredClasses && filteredClasses.length > 0 && (
+          <CompetitionClasses classes={filteredClasses} />
+        )}
       </>
     );
   }
