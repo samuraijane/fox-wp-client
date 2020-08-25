@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Date = ({ data, saveFieldData, value }) => {
+const BirthDate = ({ data, saveFieldData, value }) => {
   const { id, isRequired, label } = data;
 
   const handleChange = e => {
@@ -23,8 +23,8 @@ const Date = ({ data, saveFieldData, value }) => {
   );
 };
 
-Date.propTypes = {
+BirthDate.propTypes = {
   data: shape({})
 };
 
-export default Date;
+export default BirthDate;

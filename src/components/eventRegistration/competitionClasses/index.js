@@ -5,7 +5,6 @@ import CompetitionClass from "./CompetitionClass";
 const CompetitionClasses = ({ classes }) => {
 
   const theClass = classes.map((theClass, index) => {
-    console.log('pota blah')
     return <CompetitionClass key={index} theClass={theClass} />;
   });
 

@@ -4,7 +4,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { shape } from "prop-types";
 import { Payment } from "../";
 import CompetitionClasses from "./competitionClasses";
-import Date from '../formElements/input/Date.js';
+import BirthDate from '../formElements/input/BirthDate.js';
 import Email from '../formElements/input/Email.js';
 import Radio from '../formElements/input/Radio.js';
 import Select from '../formElements/Select.js';
@@ -20,7 +20,7 @@ const FormSection = ({ classes, formSection }) => {
   const inputTypeMap = {
     address1: Text,
     address2: Text,
-    birthdate: Date,
+    birthdate: BirthDate,
     city: Text,
     email: Email,
     emergencycontactname: Text,
@@ -63,40 +63,48 @@ const FormSection = ({ classes, formSection }) => {
   }
 
   useEffect(() => {
-    console.log('pota useEffect');
+    //
   }, [filteredClasses]);
 
   const isClassMatch = (toMatch, matchAgainst=classes) => {
     const {
-      is_active,
-      genders,
-      // ages,
       ability_levels,
-      engine_ccs_and_cycle
+      ages,
+      engine_ccs_and_cycle,
+      genders,
+      is_active,
     } = matchAgainst;
 
     const {
-      // gender,
-      // age,
-      ability_level,
-      // engine_cc,
-      //engine_cycle
+      birthdate,
+      engineccs,
+      enginetype,
+      gender,
+      skilllevel
     } = formFields;
 
+    const findAge = () => {
+      const ageInMilliseconds = Date.now() - Date.parse(birthdate);
+      const age = Math.round((ageInMilliseconds/(86400000*365)) * 10) / 10;
+      console.log('pota age', age);
+      return age;
+    }
+
+    const age = findAge();
+
     if (!is_active) return false;
-    // if (genders.indexOf("female") < 0) return false;
+    if (genders.indexOf(gender) < 0) return false;
     // if (age < ages.minimum || age > ages.maximum) return false;
-    if (ability_levels.indexOf("headsUp") < 0) return false;
-    // engine_ccs_and_cycle.forEach(engine => {
-    //   if (engine.cycle !== engine_cycle) return false;
-    //   if (engine_cc < engine.min_cc || engine_cc > engine.max_cc) return false;
-    // });
+    if (ability_levels.indexOf(skilllevel) < 0) return false;
+    engine_ccs_and_cycle.forEach(engine => {
+      if (engine.cycle !== enginetype) return false;
+      if (engineccs < engine.min_cc || engineccs > engine.max_cc) return false;
+    });
     return true;
   };
 
   const findMatchingClasses = () => {
     const matched = classes.filter(match => {
-      console.log('pota isClassMatch', isClassMatch(null, match));
       return isClassMatch(null, match) === true;
     });
     setFilteredClasses(matched);
