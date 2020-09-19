@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
-import { EditorialLayout, HeroLayout, ImageLayout } from "../../layouts";
+import { EditorialLayout, HeroLayout, ImageLayout } from "../../../layouts";
 
 // eslint-disable-next-line react/prop-types
 const Compete = (props) => {
@@ -22,14 +22,6 @@ const Compete = (props) => {
 
   return (
     <>
-      {
-        Object.keys(props.registerFields).length === 0 &&
-        props.registerFields.constructor === Object && (
-          <>
-            <p>Waiting...</p>
-          </>
-        )
-      }
       {layouts}
     </>
   );

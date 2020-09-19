@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { arrayOf, func, shape } from "prop-types";
 import { connect } from "react-redux";
-import { fetch } from "../../sstore/actions";
+import { fetch } from "../../../sstore/actions";
 import SinglePost from "./SinglePost";
 
 const Blog = ({ fetch, pages, posts }) => {

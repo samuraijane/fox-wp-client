@@ -1,13 +1,14 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { any } from "prop-types";
-import Blog from "../../views/blog";
-import Compete from "../../views/compete";
-import Contact from "../../views/contact";
-import Gallery from "../../views/gallery";
-import Home from "../../views/home";
+import Blog from "../../views/nav/blog";
+import Compete from "../../views/nav/compete";
+import Contact from "../../views/nav/contact";
+import Gallery from "../../views/nav/gallery";
+import Home from "../../views/nav/home";
 
 const NavRoutes = (props) => {
+
   const routeMap = {
     blog: Blog,
     contact: Contact,

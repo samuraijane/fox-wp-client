@@ -1,6 +1,6 @@
 import React from "react";
 import { shape } from "prop-types";
-import { EditorialLayout, ImageLayout, VideoLayout } from "../../layouts";
+import { EditorialLayout, ImageLayout, VideoLayout } from "../../../layouts";
 
 const Gallery = ({ pageData }) => {
   const layouts = pageData.acf.layouts.map((layout, index) => {

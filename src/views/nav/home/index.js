@@ -1,6 +1,6 @@
 import React from "react";
 import { shape } from "prop-types";
-import { HeroLayout, EditorialLayout } from "../../layouts";
+import { HeroLayout, EditorialLayout } from "../../../layouts";
 
 const Home = ({ pageData }) => {
   const layouts = pageData.acf.layouts.map((layout, index) => {

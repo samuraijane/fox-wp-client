@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
 import NavRoute from "./routes/nav";
+import PageRoute from "./routes/page";
 import { Navigation, Page404 } from "./components";
 import Payment from './components/payment/Payment';
 import { fetch, loadPaypal } from "./sstore/actions";
@@ -29,7 +30,7 @@ const App = props => {
       </StyledGif>
     );
   } else {
-    const routes = props.pages.map((route, index) => {
+    const navRoutes = props.pages.map((route, index) => {
       return (
         <NavRoute
           exact={true}
@@ -44,12 +45,8 @@ const App = props => {
       <div className="y-buffer y-wrap">
         <Navigation navs={props.navs} />
         <Switch>
-          {routes}
-          <Route
-            exact
-            path="/payment"
-            render={() => <Payment />}
-          />
+          {navRoutes}
+          <PageRoute />
           <Route component={Page404} />
         </Switch>
       </div>

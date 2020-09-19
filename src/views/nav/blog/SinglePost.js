@@ -1,6 +1,6 @@
 import React from "react";
 import { arrayOf, shape, string } from "prop-types";
-import { EditorialLayout, ImageLayout } from "../../layouts";
+import { EditorialLayout, ImageLayout } from "../../../layouts";
 
 const SinglePost = ({ layouts, title }) => {
   const processLayouts = layouts.map((layout, index) => {
