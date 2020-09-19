@@ -8,7 +8,8 @@ import {
   posts,
   registerFields,
   stats,
-  token
+  token,
+  user
 } from "./root";
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
   posts,
   registerFields,
   stats,
-  token
+  token,
+  user
 });
 
 export default rootReducer;

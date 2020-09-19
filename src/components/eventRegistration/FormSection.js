@@ -1,7 +1,9 @@
 /* eslint-disable react/prop-types, react/no-unescaped-entities */
 
 import React, { Fragment, useEffect, useState } from "react";
-import { shape } from "prop-types";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { func, shape } from "prop-types";
 import { Payment } from "../";
 import CompetitionClasses from "./competitionClasses";
 import BirthDate from '../formElements/input/BirthDate.js';
@@ -11,12 +13,13 @@ import Select from '../formElements/Select.js';
 import Telephone from '../formElements/input/Telephone.js';
 import Text from '../formElements/input/Text.js';
 import TextArea from '../formElements/TextArea.js';
+import { setUser } from "../../sstore/actions";
 
 import defaultFields from './defaultFields';
 import groupBy from "./utils/groupBy";
 // import extractFormData from "../../utils/extractFormData";
 
-const FormSection = ({ classes, formSection }) => {
+const FormSection = ({ classes, formSection, history, setUser }) => {
   const inputTypeMap = {
     address1: Text,
     address2: Text,
@@ -86,7 +89,6 @@ const FormSection = ({ classes, formSection }) => {
     const findAge = () => {
       const ageInMilliseconds = Date.now() - Date.parse(birthdate);
       const age = Math.round((ageInMilliseconds/(86400000*365)) * 10) / 10;
-      console.log('pota age', age);
       return age;
     }
 
@@ -108,10 +110,12 @@ const FormSection = ({ classes, formSection }) => {
       return isClassMatch(null, match) === true;
     });
     setFilteredClasses(matched);
+    history.push("/payment");
   };
 
   const handleFormSectionChange = advance => {
     setActiveFormSection(activeFormSection + advance);
+    setUser(formFields);
   };
 
   // for now, we are using Gravity Forms' cssClass attribute to group fields into sections
@@ -166,6 +170,16 @@ const FormSection = ({ classes, formSection }) => {
 
 FormSection.propTypes = {
   pageData: shape({}),
+  setUser: func
 };
 
-export default FormSection;
+const mapDispatchToProps = {
+  setUser,
+};
+
+const mapStateToProps = (state) => ({
+  user: state.user
+});
+
+
+export default (withRouter(connect(mapStateToProps, mapDispatchToProps)(FormSection)));

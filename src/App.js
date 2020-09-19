@@ -2,8 +2,9 @@ import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
-import { CustomRoute } from "./routes";
+import NavRoute from "./routes/nav";
 import { Navigation, Page404 } from "./components";
+import Payment from './components/payment/Payment';
 import { fetch, loadPaypal } from "./sstore/actions";
 import styled from "styled-components";
 import loadingGif from "./assets/motorcycle.gif";
@@ -30,12 +31,12 @@ const App = props => {
   } else {
     const routes = props.pages.map((route, index) => {
       return (
-        <CustomRoute
+        <NavRoute
           exact={true}
           key={index}
           path={`/${route.post_name}`}
           pageData={route}
-          theComponent={route.post_name}
+          componentName={route.post_name}
         />
       );
     });
@@ -44,6 +45,11 @@ const App = props => {
         <Navigation navs={props.navs} />
         <Switch>
           {routes}
+          <Route
+            exact
+            path="/payment"
+            render={() => <Payment />}
+          />
           <Route component={Page404} />
         </Switch>
       </div>
@@ -77,3 +83,12 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+/**
+  nav items coming from WP via props
+    home
+    blog
+    gallery
+    contact
+    compete
+*/

@@ -10,7 +10,8 @@ const initialState = {
     navsCount: 9999,
     postsCount: 0
   },
-  token: {}
+  token: {},
+  user: {}
 };
 
 export default initialState;

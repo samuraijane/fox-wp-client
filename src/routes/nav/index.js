@@ -1,12 +1,13 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { any } from "prop-types";
-import { Compete, Home } from "../components";
-import { Contact } from "../components/contact";
-import { Blog } from "../components/events";
-import { Gallery } from "../components/gallery";
+import Blog from "../../views/blog";
+import Compete from "../../views/compete";
+import Contact from "../../views/contact";
+import Gallery from "../../views/gallery";
+import Home from "../../views/home";
 
-const CustomRoute = (props) => {
+const NavRoutes = (props) => {
   const routeMap = {
     blog: Blog,
     contact: Contact,
@@ -15,8 +16,8 @@ const CustomRoute = (props) => {
     home: Home,
   };
 
-  const TheComponent = routeMap[props.theComponent];
-  // TODO find out why we have to do this – passing props.pageData down is returns undefined in the child component
+  const TheComponent = routeMap[props.componentName];
+  // TODO find out why we have to do this – passing props.pageData down returns undefined in the child component
   const pageData = Object.assign({}, props.pageData);
   return (
     <Route
@@ -26,10 +27,10 @@ const CustomRoute = (props) => {
   );
 };
 
-CustomRoute.propTypes = {
+NavRoutes.propTypes = {
   theComponent: any,
   pageData: any,
   path: any,
 };
 
-export default CustomRoute;
+export default NavRoutes;
