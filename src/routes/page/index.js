@@ -3,8 +3,8 @@ import { Route } from "react-router-dom";
 import { any } from "prop-types";
 
 const PageRoutes = (props) => {
-  // /compete/results
-  const Results = lazy(() => import('../../views/page/results'));
+  // /compete/result
+  const Result = lazy(() => import('../../views/page/result'));
 
   // /compete/signup
   const SignUp = lazy(() => import('../../views/page/signup'));
@@ -32,7 +32,7 @@ const PageRoutes = (props) => {
       <Route exact path="/compete/signup/confirmation" render={() => <Confirmation />} />
       <Route exact path="/compete/signup/form" render={() => <Form />} />
       <Route exact path="/compete/signup/payment" render={() => <Payment />} />
-      <Route exact path="/compete/results" render={() => <Results />} />
+      <Route exact path="/compete/result" render={() => <Result />} />
       <Route exact path="/compete/signup" render={() => <SignUp />} />
       <Route exact path="/compete/signup/form/contact" render={() => <Contact />} />
       <Route exact path="/compete/signup/form/emergency-contact" render={() => <EmergencyContact />} />

@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
 import { EditorialLayout, HeroLayout, ImageLayout } from "../../../layouts";
+import Result from '../../page/result';
+import SignUp from '../../page/signup';
 
 // eslint-disable-next-line react/prop-types
 const Compete = (props) => {
+
+  // const { RouteComponentProps } = history;
 
   const layouts = props.pageData.acf.layouts.map((layout, index) => {
     switch (layout.acf_fc_layout) {
@@ -23,6 +28,8 @@ const Compete = (props) => {
   return (
     <>
       {layouts}
+      <button onClick={() => props.history.push('/compete/result')}>See Results</button>
+      <button onClick={() => props.history.push('/compete/signup')}>Sign up</button>
     </>
   );
 };
@@ -42,4 +49,4 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default connect(mapStateToProps)(Compete);
+export default withRouter(connect(mapStateToProps)(Compete));
