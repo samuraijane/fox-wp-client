@@ -29,7 +29,7 @@ const StyledDiv = styled.div`
 const Navigation = ({ navs }) => {
   const navItems = navs.map((nav, index) => {
     return (
-      <NavLink to={nav.title.toLowerCase()} key={index}>
+      <NavLink to={`/${nav.title.toLowerCase()}`} key={index}>
         {nav.title}
       </NavLink>
     );

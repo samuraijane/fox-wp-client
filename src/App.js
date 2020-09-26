@@ -3,7 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
 import NavRoute from "./routes/nav";
-import PageRoute from "./routes/page";
 import { Navigation, Page404 } from "./components";
 import Payment from './components/payment/Payment';
 import { fetch, loadPaypal } from "./sstore/actions";
@@ -30,24 +29,11 @@ const App = props => {
       </StyledGif>
     );
   } else {
-    const navRoutes = props.pages.map((route, index) => {
-      return (
-        <NavRoute
-          exact={true}
-          key={index}
-          path={`/${route.post_name}`}
-          pageData={route}
-          componentName={route.post_name}
-        />
-      );
-    });
     return (
       <div className="y-buffer y-wrap">
         <Navigation navs={props.navs} />
         <Switch>
-          {navRoutes}
-          <PageRoute />
-          <Route component={Page404} />
+          <NavRoute />
         </Switch>
       </div>
     );
