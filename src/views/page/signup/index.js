@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import { fetch } from "../../../sstore/actions";
 
 const SignUp = (props) => {
+
+  useEffect(() => {
+    props.fetch("classes");
+    props.fetch("register");
+  }, []);
+
   return (
     <div>
       <h2>Knolls Race</h2>
@@ -9,6 +17,10 @@ const SignUp = (props) => {
       <button onClick={() => props.history.push('/compete/signup/form/identity')}>Race Form</button>
     </div>
   )
+};
+
+const mapDispatchToProps = {
+  fetch,
 };
 
 const mapStateToProps = (state) => ({
@@ -19,4 +31,4 @@ const mapStateToProps = (state) => ({
   token: state.token,
 });
 
-export default withRouter(SignUp);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignUp));

@@ -1,6 +1,7 @@
 import axios from "axios";
 import API from "../../api";
 import * as types from "./actionTypes";
+import groupBy from "./utils/groupBy";
 
 const options = {
   headers: {
@@ -105,7 +106,7 @@ const fetchRegister = (headers) => (dispatch) => {
     .then((response) => {
       const body = JSON.parse(response.data.body, null, 4);
       if (response && response.data && response.status === 200) {
-        dispatch(fetchSuccess("register", body));
+        dispatch(fetchSuccess("register", body.fields));
       }
       // TODO deal with responses that are not 200
     })
@@ -142,9 +143,10 @@ const fetchSuccess = (type, data) => {
     };
   }
   if (type === "register") {
+    const fields = groupBy(data, 'cssClass');
     return {
       type: types.SET_REGISTER_FIELDS,
-      data,
+      fields,
     };
   }
   if (type === "token") {
