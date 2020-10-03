@@ -14,7 +14,7 @@ const SignUp = (props) => {
     <div>
       <h2>Knolls Race</h2>
       <p>Vivamus consequat massa nec congue viverra. Aliquam vel arcu consectetur, pulvinar augue in, scelerisque neque. Maecenas non ex vitae lectus elementum condimentum in eu nisi.</p>
-      <button onClick={() => props.history.push('/compete/signup/form/identity')}>Race Form</button>
+      <button disabled={Object.keys(props.registerFields).length !== 7} onClick={() => props.history.push('/compete/signup/form/identity')}>Race Form</button>
     </div>
   )
 };

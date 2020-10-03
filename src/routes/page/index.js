@@ -10,7 +10,7 @@ const PageRoutes = (props) => {
   const SignUp = lazy(() => import('../../views/page/signup'));
 
   // /compete/signup/form
-  const Form = lazy(() => import('../../views/page/form'));
+  const Form = lazy(() => import('../../views/page/signup/form'));
 
   // /compete/signup/form/<someFormPart>
   const Contact = lazy(() => import('../../views/page/form/contact'));

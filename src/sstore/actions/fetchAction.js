@@ -143,10 +143,10 @@ const fetchSuccess = (type, data) => {
     };
   }
   if (type === "register") {
-    const fields = groupBy(data, 'cssClass');
+    const grouped = groupBy(data, 'cssClass');
     return {
       type: types.SET_REGISTER_FIELDS,
-      fields,
+      data: grouped
     };
   }
   if (type === "token") {
