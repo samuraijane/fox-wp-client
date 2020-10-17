@@ -21,6 +21,7 @@ const Identity = ({ fields, history, updateFieldValue }) => {
 
   const identityFields = fields.map((field, index) => {
     const normalizeFieldLabel = field.label.toLowerCase().replace(/\s/, '');
+    // if (normalizeFieldLabel === "birthdate") setMatchingField() // we'll do this if we cannot modify things directly in WP (i.e. isMatchField: true)
     const Input = inputTypeMap[normalizeFieldLabel];
     return <Input action={handleChange} data={field} key={index} label={normalizeFieldLabel} />;
   });

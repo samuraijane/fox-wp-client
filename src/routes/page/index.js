@@ -27,6 +27,9 @@ const PageRoutes = (props) => {
   // /compete/signup/form/signup/payment
   const Payment = lazy(() => import('../../views/page/signup/payment'));
 
+  // /competition-class
+  // const CompetitionClass = lazy(() => import('../../views/page/form/vehicle'));
+
   return (
     <Suspense fallback={<div>loading...</div>}>
       <Route exact path="/compete/signup/confirmation" render={() => <Confirmation />} />
