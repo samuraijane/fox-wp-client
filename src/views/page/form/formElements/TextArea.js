@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const TextArea = ({ data, saveFieldData, value }) => {
-  const { description, id, isRequired, label, maxLength } = data;
+const TextArea = ({ action, data, label }) => {
+  const { defaultValue, description, id, isRequired, maxLength } = data;
 
   const isCharAllowed = char => {
         // space, comma, period, 0 through 9
@@ -20,10 +20,10 @@ const TextArea = ({ data, saveFieldData, value }) => {
     const lastChar = e.target.value.slice(-1);
     const keyCode = lastChar ? lastChar.charCodeAt() : null;
     if (isCharAllowed(keyCode)) {
-      saveFieldData([id.match(/[^_]*/gi)], e.target.value);
+      action(id, e.target.value);
     }
     if (!keyCode) {
-      saveFieldData([id.match(/[^_]*/gi)], e.target.value);
+      // TODO notify user? Not even sure we even need this
     }
   };
 
@@ -33,7 +33,7 @@ const TextArea = ({ data, saveFieldData, value }) => {
     <textarea
       id={id}
       onChange={handleChange}
-      value={value}
+      value={defaultValue}
     />
   );
 };
