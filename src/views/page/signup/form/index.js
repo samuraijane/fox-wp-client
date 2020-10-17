@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { updateFieldValue } from '../../../../sstore/actions';
 import normalizeLabel from '../../../../utils/normalizeLabel';
+import findAge from '../../../../utils/findAge';
 
 const Form = ({
   identity,
@@ -23,7 +24,9 @@ const Form = ({
 
   const findMatchingClasses = () => {
     const matched = classes
+      // get only the active classes
       .filter(x => x.is_active === true)
+      // compare age, skill level, and gender
       .map(y => {
         if(!y) throw undefined;
         let isMatch = false;
@@ -32,6 +35,7 @@ const Form = ({
         if(y.genders.indexOf(mGender) > -1) isMatch = true;
         if(isMatch) return y;
       })
+      // compare engine cycle and cc's
       .map(z => {
         if(!z) throw undefined;
         let isMatch = false;
@@ -47,7 +51,7 @@ const Form = ({
   // iterate over the sections that have fields we match against
   const checkUserMatchFields = () => {
     identity.forEach(field => {
-      if(field.label === 'Birthdate') setMAge(field.defaultValue);
+      if(field.label === 'Birthdate') setMAge(findAge(field.defaultValue));
       if(field.label === 'Gender') setMGender(field.defaultValue);
     });
     vehicle.forEach(field => {
