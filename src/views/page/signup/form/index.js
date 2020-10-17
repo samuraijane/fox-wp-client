@@ -24,26 +24,20 @@ const Form = ({
 
   const findMatchingClasses = () => {
     const matched = classes
-      // get only the active classes
-      .filter(x => x.is_active === true)
-      // compare age, skill level, and gender
+      .filter(u => u.is_active === true)
+      .filter(v => mAge >= v.ages.minimum && mAge <= v.ages.maximum)
+      .filter(w => w.ability_levels.indexOf(mSkill) > -1)
+      .filter(x => x.genders.indexOf(mGender) > -1)
       .map(y => {
-        if(!y) throw undefined;
         let isMatch = false;
-        if(mAge >= y.ages.minimum && mAge <= y.ages.maximum) isMatch = true;
-        if(y.ability_levels.indexOf(mSkill) > -1) isMatch = true;
-        if(y.genders.indexOf(mGender) > -1) isMatch = true;
-        if(isMatch) return y;
-      })
-      // compare engine cycle and cc's
-      .map(z => {
-        if(!z) throw undefined;
-        let isMatch = false;
-        z.engine_ccs_and_cycle.forEach(item => {
-          if(item.cycle === mCycle) isMatch = true;
-          if(mCCS >= item.min_cc && mCCS <= item.max_cc) return true;
+        y.engine_ccs_and_cycle.forEach(item => {
+          if(item.cycle === mCycle && (mCCS >= item.min_cc && mCCS <= item.max_cc)) isMatch = true;
         });
-      });
+        if(isMatch) return y;
+        return false;
+      })
+      .filter(z => z !== false);
+    console.log(matched);
     setFilteredClasses(matched);
     // history.push("/payment");
   };
@@ -102,6 +96,9 @@ const Form = ({
         {sponsorSection}
         {emergencyContactSection}
         <button onClick={findMatchingClasses}>Find Matching Classes</button>
+        {filteredClasses && (
+          <>{filteredClasses.length}</>
+        )}
     </div>
   )
 };
