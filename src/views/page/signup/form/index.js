@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { updateFieldValue } from '../../../../sstore/actions';
-import CompetitionClasses from "../../../../components/eventRegistration/competitionClasses";
-import defaultFields from '../../../../components/eventRegistration/defaultFields';
 import normalizeLabel from '../../../../utils/normalizeLabel';
 
 const Form = ({
@@ -17,7 +15,6 @@ const Form = ({
   classes
 }) => {
   const [filteredClasses, setFilteredClasses] = useState([]);
-  const [formFields, setFormFields] = useState(defaultFields);
   const [mAge, setMAge] = useState();
   const [mCCS, setMCCs] = useState();
   const [mGender, setMGender] = useState();
