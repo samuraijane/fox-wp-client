@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const BirthDate = ({ data, saveFieldData, value }) => {
-  const { id, isRequired, label } = data;
+const BirthDate = ({ action, data, label }) => {
+  const { defaultValue, id, isRequired } = data;
 
   const handleChange = e => {
-    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
+    action(id, e.target.value)
   };
 
   return (
@@ -17,7 +17,7 @@ const BirthDate = ({ data, saveFieldData, value }) => {
         onChange={handleChange}
         required={isRequired}
         type="date"
-        value={value}
+        value={defaultValue}
       />
     </>
   );
