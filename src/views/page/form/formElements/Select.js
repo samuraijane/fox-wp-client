@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { shape } from "prop-types";
 
-const Select = ({ data, saveFieldData, value }) => {
-  const { choices, id, isRequired, label } = data;
+const Select = ({ action, data, label }) => {
+  const { choices, defaultValue, id, isRequired } = data;
 
   const handleChange = e => {
-    saveFieldData([id.match(/[^_]*/gi)], e.target.value);
+    action(id, e.target.value)
   };
 
   const options = choices.map((choice, index) => {
@@ -26,7 +26,8 @@ const Select = ({ data, saveFieldData, value }) => {
         onChange={handleChange}
         id={id}
         name={id}
-        value={value}
+        required={isRequired}
+        value={defaultValue}
       >
         {options}
       </select>
