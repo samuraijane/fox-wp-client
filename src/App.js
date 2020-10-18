@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
+import Navigation from './layouts/navigation';
 import NavRoute from "./routes/nav";
-import { Navigation, Page404 } from "./components";
 import Payment from './components/payment/Payment';
 import { fetch, loadPaypal } from "./sstore/actions";
 import styled from "styled-components";
@@ -30,11 +30,13 @@ const App = props => {
     );
   } else {
     return (
-      <div className="y-buffer y-wrap">
+      <div className="y-wrap">
         <Navigation navs={props.navs} />
-        <Switch>
-          <NavRoute />
-        </Switch>
+        <div className="y-wrap__inner">
+          <Switch>
+            <NavRoute />
+          </Switch>
+        </div>
       </div>
     );
   }

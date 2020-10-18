@@ -2,30 +2,18 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, shape } from "prop-types";
-import styled from "styled-components";
+import './style.scss'; 
 
-const StyledNav = styled.nav`
-  background-color: AliceBlue;
-  left: 0;
-  padding: 20px 0;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 49;
-
-  a {
-    font-size: 14px;
-    font-weight: 700px;
-  }
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0 auto;
-  width: 90%;
-`;
-
+/**
+ * A layout component that renders the main navigation.
+ * 
+ * @component
+ * @name Navigation
+ * @since Oct-17-20
+ * @version 0.1.0
+ * @author Matthew Day <matt@matthewday.net>
+ * @param {Array} navs – An array of nav objects
+ */
 const Navigation = ({ navs }) => {
   const navItems = navs.map((nav, index) => {
     return (
@@ -36,9 +24,9 @@ const Navigation = ({ navs }) => {
   });
 
   return (
-    <StyledNav>
-      <StyledDiv>{navItems}</StyledDiv>
-    </StyledNav>
+    <div className="y-navigation">
+      <div className="y-navigation__nav-items">{navItems}</div>
+    </div>
   );
 };
 

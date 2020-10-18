@@ -1,6 +1,10 @@
-.y-wrap {
-  margin: 0 auto;
-  width: 90%;
+.y-main {
+  position: relative;
+
+  .y-main__inner {
+    margin: 0 auto;
+    width: 90%;
+  }
 }
 
 .y-buffer {

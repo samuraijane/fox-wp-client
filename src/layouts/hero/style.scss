@@ -1,0 +1,25 @@
+@import '../../styles/index.scss';
+@import '../../styles/responsive.scss';
+
+.nimg {
+  height: 190px;
+  overflow: hidden;
+  position: relative;
+  width: auto;
+
+  img {
+    bottom: 0;
+    height: auto;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+  }
+
+  &.nimg--hero {
+    @include _mq(small) {
+      border: 1px solid crimson;
+      padding: 20px;
+    }
+  }
+
+}

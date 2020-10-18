@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { updateFieldValue } from '../../../../sstore/actions';
+import CompetitionClasses from '../../../../components/competitionClasses';
 import normalizeLabel from '../../../../utils/normalizeLabel';
 import findAge from '../../../../utils/findAge';
 
@@ -37,7 +38,6 @@ const Form = ({
         return false;
       })
       .filter(z => z !== false);
-    console.log(matched);
     setFilteredClasses(matched);
     // history.push("/payment");
   };
@@ -97,7 +97,7 @@ const Form = ({
         {emergencyContactSection}
         <button onClick={findMatchingClasses}>Find Matching Classes</button>
         {filteredClasses && (
-          <>{filteredClasses.length}</>
+          <CompetitionClasses classes={filteredClasses} />
         )}
     </div>
   )

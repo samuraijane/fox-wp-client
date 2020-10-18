@@ -1,6 +1,6 @@
 import ContactLayout from "./contact/LayoutContact";
 import EditorialLayout from "./editorial/LayoutEditorial";
-import HeroLayout from "./hero/LayoutHero";
+import HeroLayout from "./hero";
 import ImageLayout from "./image/LayoutImage";
 import VideoLayout from "./video/LayoutVideo";
 

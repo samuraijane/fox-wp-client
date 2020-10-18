@@ -1,0 +1,17 @@
+.y-navigation {
+  background-color: rgb(127, 177, 230);
+  padding: 20px 0;
+  width: 100%;
+
+  a {
+    font-size: 14px;
+    font-weight: 700px;
+  }
+
+  .y-navigation__nav-items {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    width: 90%;
+  }
+}

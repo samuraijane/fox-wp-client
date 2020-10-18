@@ -18,7 +18,7 @@ const Compete = (props) => {
       case "images_layout":
         return <ImageLayout key={index} images={layout.images} />;
       case "hero_layout":
-        return <HeroLayout graphic={layout.images[0].image.url} key={index} />;
+        return <HeroLayout isFull graphic={layout.images[0].image.url} key={index} />;
 
       default:
         console.error("Unknown layout type.");
