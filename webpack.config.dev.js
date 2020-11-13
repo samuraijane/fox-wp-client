@@ -17,14 +17,16 @@ module.exports = {
   devServer: {
     stats: "minimal",
     overlay: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    hot: true
   },
   plugins: [
     new Dotenv(),
     new HtmlWebpackPlugin({
       template: "public/index.html"
       // favicon: "public/favicon.ico"
-    })
+    }),
+    new webpack.HotModuleReplacementPlugin()
   ],
   module: {
     rules: [
