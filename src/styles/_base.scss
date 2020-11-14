@@ -35,6 +35,23 @@ h4 {
 //----------------------------------------------------------------------------
 //  Form Elements
 //----------------------------------------------------------------------------
+// all buttons must be children of a parent with `display: flex`
+button {
+  background-color: #e3841e;
+  border: 1px solid transparent;
+  color: white;
+  margin: 0 12px;
+  flex: 1 1 0px;
+  font-weight: 700;
+  max-width: 120px;
+  padding: 8px 16px;
+  transition: ease-in-out background-color 200ms;
+
+  &:hover {
+    background-color: #9c5b16;
+  }
+}
+
 button[type="submit"] {
   background-color: crimson;
   border: 1px solid transparent;
@@ -63,7 +80,9 @@ p + p {
   margin-top: 22px;
 }
 
-
+//----------------------------------------------------------------------------
+//  Sectioning Elements
+//----------------------------------------------------------------------------
 main {
   position: relative;
   // margin-top: 60px;

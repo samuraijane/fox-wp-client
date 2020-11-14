@@ -28,8 +28,10 @@ const Compete = (props) => {
   return (
     <>
       {layouts}
-      <button onClick={() => props.history.push('/compete/result')}>See Results</button>
-      <button onClick={() => props.history.push('/compete/signup')}>Sign up</button>
+      <div className="y-button">
+        <button onClick={() => props.history.push('/compete/result')}>See Results</button>
+        <button onClick={() => props.history.push('/compete/signup')}>Sign up</button>
+      </div>
     </>
   );
 };

@@ -1,7 +1,7 @@
 
 .y-wrap__inner {
   margin: 0 auto;
-  padding: 20px 0 40px;
+  padding: 20px 0;
   width: 90%;
 }
 
@@ -15,4 +15,10 @@
 
 .form-section {
   border: 1px solid crimson;
+}
+
+.y-button {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
 }
