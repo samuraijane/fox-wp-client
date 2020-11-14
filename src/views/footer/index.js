@@ -3,7 +3,7 @@ import './style.scss';
 
 const Footer = props => {
 
-  return <div className="y-footer">This is the footer</div>;
+  return <footer className="y-footer">This is the footer</footer>;
 };
 
 export default Footer;

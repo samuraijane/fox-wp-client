@@ -8,6 +8,7 @@ import {
   posts,
   registerFields,
   stats,
+  styles,
   token,
   user
 } from "./root";
@@ -20,6 +21,7 @@ const rootReducer = combineReducers({
   posts,
   registerFields,
   stats,
+  styles,
   token,
   user
 });

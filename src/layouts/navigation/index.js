@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, shape } from "prop-types";
+import { addStyleValue } from '../../sstore/actions/addStyleValue';
 import './style.scss'; 
 
 /**
@@ -14,7 +15,11 @@ import './style.scss';
  * @author Matthew Day <matt@matthewday.net>
  * @param {Array} navs – An array of nav objects
  */
-const Navigation = ({ navs }) => {
+const Navigation = ({ navs, addStyleValue }) => {
+
+  useEffect(() => {
+    addStyleValue('headerHeight', `${document.getElementById('header').scrollHeight}px`);
+  })
 
   const navItems = navs.map((nav, index) => {
     const navTitle = nav.title.toLowerCase();
@@ -26,9 +31,9 @@ const Navigation = ({ navs }) => {
   });
 
   return (
-    <div className="y-navigation">
+    <header className="y-navigation" id="header">
       <div className="y-navigation__nav-items">{navItems}</div>
-    </div>
+    </header>
   );
 };
 
@@ -41,7 +46,7 @@ Navigation.propTypes = {
 };
 
 const mapDispatchToProps = {
-  fetch
+  addStyleValue
 };
 
 const mapStateToProps = state => ({

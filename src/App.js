@@ -31,13 +31,13 @@ const App = props => {
     );
   } else {
     return (
-      <div className="y-wrap">
+      <>
         <Navigation navs={props.navs} />
         <Switch>
           <NavRoute />
         </Switch>
         <Footer />
-      </div>
+      </>
     );
   }
 };

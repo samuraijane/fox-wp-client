@@ -1,0 +1,11 @@
+//----------------------------------------------------------------------------
+//  APP STYLE
+//  We keep this separate because it is applied directly in index.html
+//----------------------------------------------------------------------------
+
+.app-udf {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+}

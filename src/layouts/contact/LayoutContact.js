@@ -17,7 +17,7 @@ const Contact = ({ fields, message }) => {
     e.preventDefault();
   };
   return (
-    <form className="y-wrap" onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit}>
       <p>{message}</p>
       <ul>{theFields}</ul>
       <button type="submit">submit</button>

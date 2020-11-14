@@ -15,7 +15,7 @@ const Account = () => {
   const isLoading = bool => setLoading(bool);
 
   return (
-    <div className="y-wrap">
+    <>
       <StyledDiv>
         <h2>Login</h2>
         <Login loading={isLoading} />
@@ -29,7 +29,7 @@ const Account = () => {
         then login before you can register for the race.
       </p>
       {loading ? <Loading /> : ""}
-    </div>
+    </>
   );
 };
 

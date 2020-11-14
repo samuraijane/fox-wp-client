@@ -10,6 +10,7 @@ const initialState = {
     navsCount: 9999,
     postsCount: 0
   },
+  styles: {},
   token: {},
   user: {}
 };

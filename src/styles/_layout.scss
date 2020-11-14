@@ -1,14 +1,8 @@
-.y-wrap {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  position: relative;
 
-  .y-wrap__inner {
-    margin: 0 auto;
-    padding: 20px 0 40px;
-    width: 90%;
-  }
+.y-wrap__inner {
+  margin: 0 auto;
+  padding: 20px 0 40px;
+  width: 90%;
 }
 
 .y-buffer {

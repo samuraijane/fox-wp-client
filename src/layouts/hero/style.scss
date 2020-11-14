@@ -1,18 +1,14 @@
 .nimg {
-  // height: 190px;
-  // overflow: hidden;
-  // position: relative;
-  // width: auto;
+  height: 190px;
+  overflow: hidden;
+  width: 100%;
 
   img {
-    // bottom: 0;
-    // position: absolute;
-    // width: 100%;
-    // z-index: -1;
+    width: 100%;
+    height: auto;
   }
-
-  &.nimg--hero {
-    // margin-bottom: 50px;
-  }
-
 }
+
+// TODO
+// consider adding a field in Wordpress that lets the user determine an anchor point for the image since aspect ratios will vary
+// the value of the field would be used inline on `<img />`
