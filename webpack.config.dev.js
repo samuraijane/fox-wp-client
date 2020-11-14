@@ -18,7 +18,9 @@ module.exports = {
     stats: "minimal",
     overlay: true,
     historyApiFallback: true,
-    hot: true
+    hot: true,
+    host: '0.0.0.0',//your ip address
+    port: 3001,
   },
   plugins: [
     new Dotenv(),
