@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { arrayOf, func, shape } from "prop-types";
+import Footer from './views/footer';
 import Navigation from './layouts/navigation';
 import NavRoute from "./routes/nav";
 import Payment from './components/payment/Payment';
@@ -35,6 +36,7 @@ const App = props => {
         <Switch>
           <NavRoute />
         </Switch>
+        <Footer />
       </div>
     );
   }
