@@ -1,4 +1,11 @@
+//----------------------------------------------------------------------------
+//  Applied Global Styles
+//----------------------------------------------------------------------------
+
 @import "./styles/_reset";
+@import "./styles/_variables";
+@import "./styles/_mixins";
+@import "./styles/_theme";
 @import "./styles/_base";
 @import "./styles/_layout";
 @import "./styles/_vendor";

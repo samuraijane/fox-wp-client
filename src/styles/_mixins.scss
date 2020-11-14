@@ -1,0 +1,18 @@
+//----------------------------------------------------------------------------
+//  Body Text
+//----------------------------------------------------------------------------
+@mixin _btStandard  { font-size: 18px; line-height: 28px; }  // 320px
+@mixin _btS         { font-size: 18px; line-height: 28px; }  // 576px
+@mixin _btM         { font-size: 18px; line-height: 28px; }  // 768px
+@mixin _btL         { font-size: 52px; line-height: 72px; }  // 992px
+@mixin _btXL        { font-size: 52px; line-height: 72px; }  // 1200px
+
+//----------------------------------------------------------------------------
+//  Media Queries
+//----------------------------------------------------------------------------
+@mixin _mq($size) {
+  @if       $size == small    { @media only screen and (min-width: $small)   { @content; } }
+  @else if  $size == medium   { @media only screen and (min-width: $medium)  { @content; } }
+  @else if  $size == large    { @media only screen and (min-width: $large)   { @content; } }
+  @else if  $size == xlarge   { @media only screen and (min-width: $xlarge)  { @content; } }
+}
