@@ -10,7 +10,6 @@ import Home from "../../views/nav/home";
 import PageRoute from "../page";
 
 const NavRoutes = (props) => {
-  console.log('pota topMargin', props.topMargin);
   const routeMap = {
     blog: Blog,
     contact: Contact,
