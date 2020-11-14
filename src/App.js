@@ -32,11 +32,9 @@ const App = props => {
     return (
       <div className="y-wrap">
         <Navigation navs={props.navs} />
-        <div className="y-wrap__inner">
-          <Switch>
-            <NavRoute />
-          </Switch>
-        </div>
+        <Switch>
+          <NavRoute />
+        </Switch>
       </div>
     );
   }

@@ -3,9 +3,7 @@ import { string } from "prop-types";
 
 const Editorial = ({ text }) => {
   return (
-    <div>
-      <p>{text}</p>
-    </div>
+    <div className="y-wrap__inner y-editorial" dangerouslySetInnerHTML={{ __html: text }}/>
   );
 };
 
