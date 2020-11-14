@@ -22,18 +22,23 @@ const Vehicle = ({ fields, history, updateFieldValue }) => {
   const contactFields = fields.map((field, index) => {
     const normalizeFieldLabel = field.label.toLowerCase().replace(/\s/, '');
     const Input = inputTypeMap[normalizeFieldLabel];
-    return <Input action={handleChange} data={field} key={index} label={normalizeFieldLabel} />;
+    return (
+      <div className="signup__input-container" key={`${normalizeFieldLabel}-${index}`}>
+        <Input action={handleChange} data={field} label={normalizeFieldLabel} />
+      </div>
+    );
   });
   return (
-    <>
-      <p>Vehicle Page</p>
+    <div className="signup__vehicle">
       {fields && (
         <>
           {contactFields}
-          <button onClick={() => history.push('/compete/signup/form/skill-level')}>Next</button>
+          <div className="y-button">
+            <button onClick={() => history.push('/compete/signup/form/skill-level')}>Next</button>
+          </div>
         </>
       )}
-    </>
+    </div>
   )
 };
 

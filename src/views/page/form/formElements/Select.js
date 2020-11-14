@@ -20,7 +20,7 @@ const Select = ({ action, data, label }) => {
     );
   });
   return (
-    <>
+    <div className="signup__select-container">
       <label htmlFor={id}>Select Your Engine Size</label>
       <select
         onChange={handleChange}
@@ -31,7 +31,7 @@ const Select = ({ action, data, label }) => {
       >
         {options}
       </select>
-    </>
+    </div>
   );
 };
 

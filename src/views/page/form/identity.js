@@ -22,18 +22,23 @@ const Identity = ({ fields, history, updateFieldValue }) => {
   const identityFields = fields.map((field, index) => {
     const normalizeFieldLabel = field.label.toLowerCase().replace(/\s/, '');
     const Input = inputTypeMap[normalizeFieldLabel];
-    return <Input action={handleChange} data={field} key={index} label={normalizeFieldLabel} />;
+    return (
+      <div className="signup__input-container" key={`${normalizeFieldLabel}-${index}`}>
+        <Input action={handleChange} data={field} label={normalizeFieldLabel} />
+      </div>
+    );
   });
   return (
-    <>
-      <p>Identity Page</p>
+    <div className="signup__identity">
       {fields && (
         <>
           {identityFields}
-          <button onClick={() => history.push('/compete/signup/form/contact')}>Next</button>
+          <div className="y-button">
+            <button onClick={() => history.push('/compete/signup/form/contact')}>Next</button>
+          </div>
         </>
       )}
-    </>
+    </div>
   )
 };
 

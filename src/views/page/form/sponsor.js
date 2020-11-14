@@ -20,15 +20,17 @@ const Sponsor = ({ fields, history, updateFieldValue }) => {
     return <Input action={handleChange} data={field} key={index} label={normalizeFieldLabel} />;
   });
   return (
-    <>
-      <p>Sponsor Page</p>
+    <div className="signup__sponsors">
       {fields && (
         <>
+          <p>List up to three sponsors in the box below. Separate each one with a comma.</p>
           {contactFields}
-          <button onClick={() => history.push('/compete/signup/form/emergency-contact')}>Next</button>
+          <div className="y-button">
+            <button onClick={() => history.push('/compete/signup/form/emergency-contact')}>Next</button>
+          </div>
         </>
       )}
-    </>
+    </div>
   )
 };
 

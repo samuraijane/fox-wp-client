@@ -1,0 +1,45 @@
+//----------------------------------------------------------------------------
+//  Form
+//----------------------------------------------------------------------------
+
+.signup__identity {
+
+}
+
+.signup__input-container {
+  margin-bottom: 16px;
+}
+
+.signup__radio-container {
+
+  .signup__radio-label {
+    align-items: center;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    margin: 10px 0;
+
+    input {
+      width: 20px;
+    }
+  }
+}
+
+.signup__select-container {
+  display: flex;
+  justify-content: space-between;
+
+  select {
+    width: 140px;
+  }
+}
+
+.signup__sponsors {
+  p {
+    margin-bottom: 16px;
+  }
+  textarea {
+    min-height: 200px;
+    width: 100%;
+  }
+}

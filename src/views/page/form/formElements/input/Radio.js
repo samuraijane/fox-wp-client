@@ -14,7 +14,7 @@ const Radio = ({ action, data, label }) => {
   const options = choices.map((choice, index) => {
     const key = `${id}_${index}`;
     return (
-      <label key={key}>
+      <label className="signup__radio-label" key={key}>
         <input
           checked={choice.value === defaultValue}
           id={id}
@@ -25,15 +25,15 @@ const Radio = ({ action, data, label }) => {
           type="radio"
           value={choice.value}
         />
-        {choice.text}
+        <span>{choice.text}</span>
       </label>
     );
   });
   return (
-    <>
+    <div className="signup__radio-container">
       <h2>{label}</h2>
       {options}
-    </>
+    </div>
   );
 };
 

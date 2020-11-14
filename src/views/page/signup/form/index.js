@@ -86,7 +86,7 @@ const Form = ({
   ));
 
   return (
-    <div>
+    <div className="y-wrap">
       <p>Form Page</p>
         {identitySection}
         {contactSection}

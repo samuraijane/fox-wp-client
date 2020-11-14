@@ -32,18 +32,20 @@ const PageRoutes = (props) => {
 
   return (
     <Suspense fallback={<div>loading...</div>}>
-      <Route exact path="/compete/signup/confirmation" render={() => <Confirmation />} />
-      <Route exact path="/compete/signup/form" render={() => <Form />} />
-      <Route exact path="/compete/signup/payment" render={() => <Payment />} />
-      <Route exact path="/compete/result" render={() => <Result />} />
-      <Route exact path="/compete/signup" render={() => <SignUp />} />
-      <Route exact path="/compete/signup/form/contact" render={() => <Contact />} />
-      <Route exact path="/compete/signup/form/emergency-contact" render={() => <EmergencyContact />} />
-      <Route exact path="/compete/signup/form/identity" render={() => <Identity />} />
-      <Route exact path="/compete/signup/form/skill-level" render={() => <SkillLevel />} />
-      <Route exact path="/compete/signup/form/sponsor" render={() => <Sponsor />} />
-      <Route exact path="/compete/signup/form/usra" render={() => <USRA />} />
-      <Route exact path="/compete/signup/form/vehicle" render={() => <Vehicle />} />
+      <div className="y-wrap signup">
+        <Route exact path="/compete/signup/confirmation" render={() => <Confirmation />} />
+        <Route exact path="/compete/signup/form" render={() => <Form />} />
+        <Route exact path="/compete/signup/payment" render={() => <Payment />} />
+        <Route exact path="/compete/result" render={() => <Result />} />
+        <Route exact path="/compete/signup" render={() => <SignUp />} />
+        <Route exact path="/compete/signup/form/contact" render={() => <Contact />} />
+        <Route exact path="/compete/signup/form/emergency-contact" render={() => <EmergencyContact />} />
+        <Route exact path="/compete/signup/form/identity" render={() => <Identity />} />
+        <Route exact path="/compete/signup/form/skill-level" render={() => <SkillLevel />} />
+        <Route exact path="/compete/signup/form/sponsor" render={() => <Sponsor />} />
+        <Route exact path="/compete/signup/form/usra" render={() => <USRA />} />
+        <Route exact path="/compete/signup/form/vehicle" render={() => <Vehicle />} />
+      </div>
     </Suspense>
   );
 };

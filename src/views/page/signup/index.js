@@ -11,10 +11,12 @@ const SignUp = (props) => {
   }, []);
 
   return (
-    <div>
+    <div className="y-wrap">
       <h2>Knolls Race</h2>
       <p>Vivamus consequat massa nec congue viverra. Aliquam vel arcu consectetur, pulvinar augue in, scelerisque neque. Maecenas non ex vitae lectus elementum condimentum in eu nisi.</p>
-      <button disabled={Object.keys(props.registerFields).length !== 7} onClick={() => props.history.push('/compete/signup/form/identity')}>Race Form</button>
+      <div className="y-button">
+        <button disabled={Object.keys(props.registerFields).length !== 7} onClick={() => props.history.push('/compete/signup/form/identity')}>Race Form</button>
+      </div>
     </div>
   )
 };
