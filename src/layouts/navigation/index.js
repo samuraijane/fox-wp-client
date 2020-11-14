@@ -15,9 +15,11 @@ import './style.scss';
  * @param {Array} navs – An array of nav objects
  */
 const Navigation = ({ navs }) => {
+
   const navItems = navs.map((nav, index) => {
+    const navTitle = nav.title.toLowerCase();
     return (
-      <NavLink to={`/${nav.title.toLowerCase()}`} key={index}>
+      <NavLink activeClassName='y-navigation__active' exact={true} key={`index-${navTitle}`} to={`/${navTitle}`}>
         {nav.title}
       </NavLink>
     );
