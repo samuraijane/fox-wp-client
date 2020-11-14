@@ -24,7 +24,6 @@
 }
 
 .class-cards {
-  display: grid;
   font-family: "Arial", sans-serif;
   grid-gap: 16px;
   grid-template-columns: 1fr 1fr;
@@ -37,6 +36,16 @@
   grid-template-columns: repeat(6, [col] 1fr);
   grid-gap: 14px;
   grid-template-rows: repeat(6, [row] auto);
+
+  &.class-card--brief {
+    display: flex;
+    justify-content: space-between;
+
+    .class-card--brief__name {
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
 }
 
 li {

@@ -7,14 +7,15 @@ import normalizeLabel from '../../../../utils/normalizeLabel';
 import findAge from '../../../../utils/findAge';
 
 const Form = ({
-  identity,
+  classes,
   contact,
+  emergencyContact,
+  history,
+  identity,
+  skillLevel,
   sponsors,
   usra,
-  vehicle,
-  skillLevel,
-  emergencyContact,
-  classes
+  vehicle  
 }) => {
   const [filteredClasses, setFilteredClasses] = useState([]);
   const [mAge, setMAge] = useState();
@@ -61,45 +62,93 @@ const Form = ({
     checkUserMatchFields()
   }, [])
 
-  const identitySection = identity.map((field, i) => <p key={`${field.id}-${i}`}>{field.defaultValue}</p>);
-
-  const contactSection = contact.map((field, index) => (
-    <p key={`${field.id}-${index}`}>{field.defaultValue}</p>
+  const identitySection = identity.map((field, index) => (
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
   ));
 
-  const vehicleSection = vehicle.map((field, index) => {
-    return <p key={`${field.id}-${index}`}>{field.defaultValue}</p>;
-  });
+  const contactSection = contact.map((field, index) => (
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
+  ));
 
-  const skillLevelSection = skillLevel.map((field, i) => <p key={`${field.id}-${i}`}>{field.defaultValue}</p>);
+  const vehicleSection = vehicle.map((field, index) => (
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
+  ));
+
+  const skillLevelSection = skillLevel.map((field, index) => (
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
+  ));
 
   const usraSection = usra.map((field, index) => (
-    <p key={`${field.id}-${index}`}>{field.defaultValue}</p>
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
   ));
 
   const sponsorSection = sponsors.map((field, index) => (
-    <p key={`${field.id}-${index}`}>{field.defaultValue}</p>
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
   ));
 
   const emergencyContactSection = emergencyContact.map((field, index) => (
-    <p key={`${field.id}-${index}`}>{field.defaultValue}</p>
+    <p data-row={index} key={`${field.id}-${index}`}>{field.defaultValue}</p>
   ));
 
   return (
-    <div className="y-wrap">
-      <p>Form Page</p>
-        {identitySection}
-        {contactSection}
-        {vehicleSection}
-        {skillLevelSection}
-        {usraSection}
-        {sponsorSection}
-        {emergencyContactSection}
-        <button onClick={findMatchingClasses}>Find Matching Classes</button>
+    <>
+      <p>Please verify that the information you have entered is correct</p>
+        <div className="signup__verify signup__verify--identity">
+          <div className="signup__edit">
+            <h2>Identity</h2>
+            <button onClick={() => history.push('/compete/signup/form/identity')}>Edit</button>
+          </div>
+          {identitySection}
+        </div>
+        <div className="signup__verify signup__verify--contact">
+          <div className="signup__edit">
+            <h2>Contact</h2>
+            <button onClick={() => history.push('/compete/signup/form/contact')}>Edit</button>
+          </div>
+          {contactSection}
+        </div>
+        <div className="signup__verify signup__verify--vehicle">
+          <div className="signup__edit">
+            <h2>Vehicle</h2>
+            <button onClick={() => history.push('/compete/signup/form/vehicle')}>Edit</button>
+          </div>
+          {vehicleSection}
+        </div>
+        <div className="signup__verify signup__verify--skill-level">
+          <div className="signup__edit">
+            <h2>Skill Level</h2>
+            <button onClick={() => history.push('/compete/signup/form/skill-level')}>Edit</button>
+          </div>
+          {skillLevelSection}
+        </div>
+        <div className="signup__verify signup__verify--usra">
+          <div className="signup__edit">
+            <h2>USRA</h2>
+            <button onClick={() => history.push('/compete/signup/form/usra')}>Edit</button>
+          </div>
+          {usraSection}
+        </div>
+        <div className="signup__verify signup__verify--sponsors">
+          <div className="signup__edit">
+            <h2>Sponsors</h2>
+            <button onClick={() => history.push('/compete/signup/form/sponsor')}>Edit</button>
+          </div>
+          {sponsorSection}
+        </div>
+        <div className="signup__verify signup__verify--emergency-contact">
+          <div className="signup__edit">
+            <h2>Emergency Contact</h2>
+            <button onClick={() => history.push('/compete/signup/form/emergency-contact')}>Edit</button>
+          </div>
+          {emergencyContactSection}
+        </div>
+        <div className="y-button y-button--extended">
+          <button onClick={findMatchingClasses}>Choose Your Class</button>
+        </div>
         {filteredClasses && (
           <CompetitionClasses classes={filteredClasses} />
         )}
-    </div>
+    </>
   )
 };
 
