@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import { boolean, string } from "prop-types";
 import './style.scss';
 
@@ -13,9 +12,9 @@ import './style.scss';
  * @author Matthew Day <matt@matthewday.net>
  * @param {string} graphic – URL of the image
  */
-const Hero = ({ graphic, isFull, topMargin }) => {
+const Hero = ({ graphic, isFull }) => {
   return (
-    <div className="nimg nimg--hero" style={{ marginTop: topMargin }}>
+    <div className="nimg nimg--hero">
       <img src={graphic} />
     </div>
   );
@@ -25,8 +24,4 @@ Hero.propTypes = {
   graphic: string
 };
 
-const mapStateToProps = state => ({
-  topMargin: state.styles.headerHeight
-});
-
-export default connect(mapStateToProps)(Hero);
+export default Hero;

@@ -13,7 +13,7 @@ const Home = ({ pageData }) => {
     return <p key="blah">Error: Unknown layout</p>;
   });
 
-  return <main>{layouts}</main>;
+  return <>{layouts}</>;
 };
 
 Home.propTypes = {

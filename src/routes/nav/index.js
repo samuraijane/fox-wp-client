@@ -10,7 +10,7 @@ import Home from "../../views/nav/home";
 import PageRoute from "../page";
 
 const NavRoutes = (props) => {
-
+  console.log('pota topMargin', props.topMargin);
   const routeMap = {
     blog: Blog,
     contact: Contact,
@@ -40,10 +40,10 @@ const NavRoutes = (props) => {
     });
 
     return (
-      <>
+      <main style={{ marginTop: props.topMargin }}>
         {navRoutes}
         <PageRoute />
-      </>
+      </main>
     );
   } else {
     return <p>loading...</p>
@@ -58,7 +58,8 @@ NavRoutes.propTypes = {
 
 const mapStateToProps = state => ({
   navs: state.navs,
-  pages: state.pages
+  pages: state.pages,
+  topMargin: state.styles.headerHeight
 });
 
 export default connect(mapStateToProps)(NavRoutes);
