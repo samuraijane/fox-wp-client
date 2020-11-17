@@ -63,3 +63,14 @@
     padding: 4px 8px;
   }
 }
+
+.form-field {
+  border: 1px solid #666;
+  padding: 6px 12px;
+
+  &.form-field--invalid 
+  {
+    background-color: rgba(220, 20, 60, 0.4);  // TODO find a better danger color, this is crimson is 40% opacity
+    border: 1px solid transparent;
+  }
+}

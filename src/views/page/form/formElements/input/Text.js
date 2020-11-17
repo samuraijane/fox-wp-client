@@ -35,6 +35,7 @@ const Text = ({ action, data, label }) => {
       <>
         <label htmlFor={id}>{label}</label>
         <input
+          className="form-field"
           id={id}
           required={isRequired}
           name={id}

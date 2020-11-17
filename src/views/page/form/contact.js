@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Email from './formElements/input/Email.js';
+import Telephone from './formElements/input/Telephone.js';
 import Text from './formElements/input/Text.js';
 import { updateFieldValue } from '../../../sstore/actions';
 
 const Contact = ({ fields, history, updateFieldValue }) => {
 
-  const handleChange = (id, value) => {
+  const handleChange = (id, value, type) => {
     updateFieldValue(id, 'contact', value);
   }
 
@@ -16,8 +18,8 @@ const Contact = ({ fields, history, updateFieldValue }) => {
     city: Text,
     state: Text,
     zipcode: Text,
-    phone: Text,
-    email: Text
+    phone: Telephone,
+    email: Email
   };
 
   const contactFields = fields.map((field, index) => {
