@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import Radio from './formElements/input/Radio.js';
 import Text from './formElements/input/Text.js';
-import { updateFieldValue } from '../../../sstore/actions';
+import { mockDataFor, updateFieldValue } from '../../../sstore/actions';
 
 const USRA = ({ fields, history, updateFieldValue }) => {
 
@@ -41,7 +41,8 @@ const USRA = ({ fields, history, updateFieldValue }) => {
 };
 
 const mapDispatchToProps = {
-  updateFieldValue
+  updateFieldValue,
+  mockDataFor
 };
 
 const mapStateToProps = (state) => ({

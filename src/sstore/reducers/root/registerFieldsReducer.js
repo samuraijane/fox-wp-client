@@ -19,6 +19,10 @@ const registerFieldsReducer = (state = initialState.registerFields, action) => {
   if (action.type === types.SET_REGISTER_FIELDS) {
     return action.data;
   }
+  if (action.type === types.SET_MOCK_DATA) {
+    debugger;
+    return action.registerFields;
+  }
 
   return state;
 };

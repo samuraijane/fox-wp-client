@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { fetch } from "../../../sstore/actions";
+import { fetch, mockDataFor } from "../../../sstore/actions";
 
 const SignUp = (props) => {
 
@@ -17,12 +17,16 @@ const SignUp = (props) => {
       <div className="y-button">
         <button disabled={Object.keys(props.registerFields).length !== 7} onClick={() => props.history.push('/compete/signup/form/identity')}>Race Form</button>
       </div>
+      <div>
+        <button onClick={() => props.mockDataFor()}>Anna</button>
+      </div>
     </div>
   )
 };
 
 const mapDispatchToProps = {
   fetch,
+  mockDataFor
 };
 
 const mapStateToProps = (state) => ({
