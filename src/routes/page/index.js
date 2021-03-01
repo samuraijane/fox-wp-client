@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from "react";
 import { Route } from "react-router-dom";
 import { any } from "prop-types";
+import CompetitionClasses from "../../components/competitionClasses";
 
 const PageRoutes = (props) => {
   // /compete/result
@@ -28,11 +29,12 @@ const PageRoutes = (props) => {
   const Payment = lazy(() => import('../../views/page/signup/payment'));
 
   // /competition-class
-  // const CompetitionClass = lazy(() => import('../../views/page/form/vehicle'));
+  const CompetitionClass = lazy(() => import('../../components/competitionClasses'));
 
   return (
     <Suspense fallback={<div>loading...</div>}>
       <div className="y-wrap signup">
+      <Route exact path="/compete/classes" render={() => <CompetitionClasses />} />
         <Route exact path="/compete/signup/confirmation" render={() => <Confirmation />} />
         <Route exact path="/compete/signup/form" render={() => <Form />} />
         <Route exact path="/compete/signup/payment" render={() => <Payment />} />

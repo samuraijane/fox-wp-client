@@ -31,6 +31,7 @@ const Compete = (props) => {
       <div className="y-button">
         <button onClick={() => props.history.push('/compete/result')}>See Results</button>
         <button onClick={() => props.history.push('/compete/signup')}>Sign up</button>
+        <button onClick={() => props.history.push('/compete/classes')}>Classes</button>
       </div>
     </>
   );
