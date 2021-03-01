@@ -19,6 +19,7 @@ const SignUp = (props) => {
       </div>
       <div>
         <button onClick={() => props.mockDataFor()}>Anna</button>
+        <button onClick={() => props.history.push('/compete/classes')}>Classes</button>
       </div>
     </div>
   )
