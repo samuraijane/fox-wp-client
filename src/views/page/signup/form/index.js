@@ -39,6 +39,7 @@ const Form = ({
         return false;
       })
       .filter(z => z !== false);
+    console.log('pota matched', matched);
     setFilteredClasses(matched);
     // history.push("/payment");
   };

@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { withRouter, RouteComponentProps } from 'react-router-dom';
+import Radio from './formElements/input/Radio.js';
 import Text from './formElements/input/Text.js';
 import { updateFieldValue } from '../../../sstore/actions';
 
@@ -12,8 +13,7 @@ const USRA = ({ fields, history, updateFieldValue }) => {
 
   const inputTypeMap = {
     usraclass: Text,
-    usradivision: Text,
-    usramemberno: Text,
+    usramember: Radio,
     usraplateno: Text
   };
 
